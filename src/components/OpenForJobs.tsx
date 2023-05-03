@@ -1,9 +1,12 @@
 import Divider from "./Divider";
 
 export default function OpenForJobs() {
-    return <div className=''>
+    return <div >
         <Divider></Divider>
-    <p className="text-4xl font-bold  text-zinc-800">Open for Jobs</p>
+        <div className="myContainer">
+            <p className="myHeading">Open for Jobs</p>
+        </div>
+
         <Divider></Divider>
     </div>
 }
