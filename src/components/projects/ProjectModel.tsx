@@ -17,8 +17,9 @@ export default class Project{
     }
 
 
-    static fromJSON(json: any): Project{
-        return new Project(json.title, json.thumbnailUrl, json.logos, json.description);
+    static fromJSON(json: any): Project{    
+        const attributes = json.attributes
+        return new Project(attributes.Title, json.Thumbnail.data.attributes.url, json.Logos, json.description);
     }
 
     static fromJSONList(json: any[]): Project[]{
