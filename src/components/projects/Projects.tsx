@@ -5,18 +5,27 @@ import Project from "./ProjectModel";
 export default function Projects(props: { projects: Project[] }) {
 
 
-  console.log(props)
+  //turn projects into pairs
+  const pairs = []
+
+  for (let i = 0; i < props.projects.length; i += 2) {
+    pairs.push([props.projects[i], props.projects[i + 1]])
+  }
+
+  console.log(pairs)
   return <div>
 
-    {props.projects.map((pair, index: number) => {
-      return <div className="grid grid-cols-1 md:grid-cols-3">
-        <div className="odd:col-span-2">
-          <ProjectCard  {...pair} />
+    {pairs.map((pair, index: number) => {
+      return <div className="grid grid-cols-1 sm:grid-cols-3">
+        <div className={`${index % 2 == 0 ? "col-span-2" : ""}`}>
+          < ProjectCard  {...pair[0]} />
         </div>
-        {pair && <div className="even:col-span-2">
-          <ProjectCard {...pair} />
-        </div>}
+        {
+          pair && <div className={`${index % 2 == 1 ? "col-span-2" : ""}`}>
+            <ProjectCard {...pair[1]} />
+          </div>
+        }
       </div>
     })}
-  </div>
+  </div >
 }
