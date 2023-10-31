@@ -4,7 +4,6 @@ import Image from "next/image";
 import TechnologyModel from "../other/TechnologyModel";
 
 export default function ProjectCard(props: Project) {
-    console.log(MyUrl.getImageUrl(props.thumbnail.url))
     return (
         <div className="overflow-hidden group cursor-pointer">
             <div className="w-full h-[500px] relative shadow-inner 	">
@@ -14,8 +13,8 @@ export default function ProjectCard(props: Project) {
                         {props.title}
                         <div className="h-5"></div>
                         <div className=" flex flex-row justify-center duration-300  opacity-0 group-hover:opacity-100">
-                            {props.technology.map((item: TechnologyModel) =>
-                                <div className="pr-10 last:pr-0">
+                            {props.technology.map((item: TechnologyModel, index: number) =>
+                                <div className="pr-10 last:pr-0" key={index}>
                                     <img className="h-14 object-contain" src={MyUrl.getImageUrl(item.image.medium)} />
                                 </div>
                             )}

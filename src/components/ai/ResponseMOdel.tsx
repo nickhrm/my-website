@@ -2,16 +2,16 @@ import { fromJSON } from "postcss";
 import Project from "../projects/ProjectModel";
 
 
-export default class AiResponse{
-    project: Project[];
+export default class AiResponse {
+    projectOrder: number[];
     text: string;
 
-    constructor(project: Project[], text: string){
-        this.project = project;
+    constructor(projectOrder: number[], text: string) {
+        this.projectOrder = projectOrder;
         this.text = text;
     }
 
-    static fromJSON(json: any): AiResponse{
-        return new AiResponse(json.project, json.text);
+    static fromJSON(json: any): AiResponse {
+        return new AiResponse(json.projectOrder, json.text);
     }
 }
