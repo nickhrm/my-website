@@ -16,7 +16,7 @@ export default function Projects(props: { projects: Project[] }) {
   return <div>
 
     {pairs.map((pair, index: number) => {
-      return <div className="grid grid-cols-1 sm:grid-cols-3">
+      return <div className="grid grid-cols-1 md:grid-cols-3">
         <div className={`${index % 2 == 0 ? "col-span-2" : ""}`}>
           < ProjectCard  {...pair[0]} />
         </div>
