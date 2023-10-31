@@ -17,10 +17,12 @@ export default function Projects(props: { projects: Project[] }) {
     {pairs.map((pair, index: number) => {
       return <div key={index} className="grid grid-cols-1 md:grid-cols-3">
         <div className={`${index % 2 == 0 ? "col-span-2" : ""}`}>
+          {/* @ts-ignore */}
           < ProjectCard  {...pair[0]} />
         </div>
         {
           pair && <div className={`${index % 2 == 1 ? "col-span-2" : ""}`}>
+            {/* @ts-ignore */}
             <ProjectCard {...pair[1]} />
           </div>
         }
