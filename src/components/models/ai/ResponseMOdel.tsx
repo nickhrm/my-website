@@ -1,5 +1,5 @@
 import { fromJSON } from "postcss";
-import Project from "../projects/ProjectModel";
+import Project from "../../projects/ProjectModel";
 
 
 export default class AiResponse {

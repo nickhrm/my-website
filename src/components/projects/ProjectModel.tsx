@@ -33,7 +33,7 @@ export default class Project {
 
     //returns a string that can be used in the gpt endpoint
     togptString(): string {
-        return this.title + " " + this.description + " " + this.technology.map((item: TechnologyModel) => item.name).join(" ");
+        return "Titel: " + this.title + "\n genutzte Technologien sind: " + this.technology.map((item: TechnologyModel) => item.name).join(", ");
     }
 
 }

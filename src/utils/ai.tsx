@@ -1,4 +1,4 @@
-import AiResponse from "@/components/ai/ResponseMOdel";
+import AiResponse from "@/components/models/ai/ResponseMOdel";
 import Project from "@/components/projects/ProjectModel";
 import OpenAI from "openai";
 
@@ -10,10 +10,13 @@ export default async function aiRequest(projects: Project[], query: string): Pro
     const openai = new OpenAI({
         apiKey: process.env.OPENAI_KEY,
         dangerouslyAllowBrowser: true,
-    });
+    }); 
 
 
-    let systemMessage = "Du sollst die Folgende liste an Projekten danach sortieren, wie gut sie zu der Anfrage des Users passen. Ds ein Projekt wichtig ist bedeutet, dass es zeigt, dass ich das wonach der Nutzer fragt kann/schonmal gemacht habe. Als Antwort möchte ich ein JSON Objekt bekommen,welches die keys: 'projectOrder' und 'text' hat. 'projectOrder' soll eine Liste an Zahlen sein, welche die passende reihenfolge als eine liste von indizes darstellt(beginnent bei 0, bis n-1, n = anzahl an Projekten, in der liste müssen immer genuaso viele zahlen sein, wie es Projekte gibt). Es müssen immer alle Projekte in der Liste sein. 'text' soll ein String sein, indem du dem User erklärst, das du eine entscheidung getroffen hast und wie du diese gefällt hast Hier kommen die Projekte: " + projects.map((project: Project) => project.togptString()).join(", ")
+
+    let systemMessage = "Du sollst die Folgende liste an Projekten, welche auf der Portfoliowebsite eines Entwicklers sichtbar ist danach sortieren, wie gut ein Projekt zur Anfrage einer Firma passt. Je mehr ein Projekt zeigt, dass ich Erfahrung mit dem habe was die Firma interessiert, desto besser passt das Projekt zur Anfrage der Firma. Als Antwort möchte ich ein JSON Objekt bekommen, welches die keys: 'projectOrder' und 'text' hat. 'projectOrder' soll eine Liste aus den Nummern der Projekte sein. Es sollen jedes mal alle Indizes vorhanden sein. 'text' ist ein String, welcher der Firma erklärt, welche Projekte von mir(der Entwickler) gut zu den anforderungen der Firma passen und ob ich die richtige Person für ihre Anfrage bin (es darf auch ein nein sein) Erwähne bei 'text' nicht die Namen 'Projekt X'. Die Projekte sind untereinader durch |-Symbole abgetrent Hier die Projekte: " + projects.map((project: Project, index: number) => "Projekt " + index + ": " + project.togptString()).join("| ")
+
+    console.log(("SystemMessage:" + systemMessage))
 
     const gptResponse = await openai.chat.completions.create({
         messages: [
