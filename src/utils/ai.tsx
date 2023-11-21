@@ -1,4 +1,4 @@
-import AiResponse from "@/components/models/ai/ResponseMOdel";
+import AiResponse from "@/components/models/ai/ResponseModel";
 import Project from "@/components/projects/ProjectModel";
 import OpenAI from "openai";
 
