@@ -1,17 +1,40 @@
-import MyUrls from "./urls";
+import ProjectCardModel from "./project_card_model";
+import ProjectModel from "./project_model";
+import MyUrls from "./strapi_urls";
 
 
 export default class StrapiRepository {
 
     static headers = {
-        'authorization': `Bearer ${process.env.STRAPI_TOKEN}`,
+        headers: {
+            'authorization': `Bearer ${process.env.STRAPI_TOKEN}`,
+        }
     }
 
-    static async getProjects(): Promise<ProjectCardModel[]> {
-        const response = await fetch(MyUrls.getProjectCards(), { headers: StrapiRepository.headers });
-        const json: JSON[] = await response.json();
-        console.log(json);
-        const projects = json.map((project: any) => ProjectCardModel.fromJson(project.attributes.title));
+    static async getProjectCards(): Promise<ProjectCardModel[]> {
+        const response = await fetch(MyUrls.getProjectCards(), StrapiRepository.headers);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const json = await response.json();
+
+        const projects = json.data.map((project: any) => ProjectCardModel.fromJson(project.attributes.Title, project.id));
+        console.log(projects);
         return projects;
+    }
+
+    static async getProject(id: string): Promise<ProjectModel> {
+        const response = await fetch(MyUrls.getProject(id), StrapiRepository.headers);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const json = await response.json();
+        const json_project = json.data[0];
+        const project = ProjectModel.fromJson(json_project.attributes.Title, json_project.id, json_project.attributes.Content);
+        return project;
     }
 }

@@ -1,3 +1,7 @@
+import { Skeleton } from "@/components/ui/skeleton"
+
+
 export default function Page() {
-    return <h1>Loading</h1>
+    return <Skeleton className="w-full h-full rounded-full" />
+
 }

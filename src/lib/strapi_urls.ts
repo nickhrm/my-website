@@ -6,4 +6,8 @@ export default class MyUrls {
     static getProjectCards() {
         return this.privateStrapiUrl + "/projects?fields[0]=Title";
     }
-} 
+
+    static getProject(id: string) {
+        return this.privateStrapiUrl + "/projects?filters[id][$eqi]=" + id;
+    }
+}

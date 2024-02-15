@@ -1,15 +1,21 @@
 
 
-class ProjectCardModel {
+export default class ProjectCardModel {
+    title: string;
+    id: string;
     constructor(
-        public title: string,
+        title: string,
+        id: string,
+    ) {
+        this.title = title;
+        this.id = id;
+    }
 
-    ) { }
 
 
-    static fromJson(json: any): ProjectCardModel {
+    static fromJson(title: any, id: any): ProjectCardModel {
         return new ProjectCardModel(
-            json.title,
+            title, id
         );
     }
 }
