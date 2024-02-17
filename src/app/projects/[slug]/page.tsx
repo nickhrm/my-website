@@ -1,9 +1,7 @@
-'use client'
 
-
-import ContentRenderer from "@/components/content_renderer"
+import BlockRendererClient from "@/components/content_renderer"
 import StrapiRepository from "@/lib/strapi_repository"
-
+import { BlocksContent } from "@strapi/blocks-react-renderer"
 
 
 
@@ -13,7 +11,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     console.dir(project, { depth: null })
 
+
     return <div>
-        <ContentRenderer content={project.content} />
+        <BlockRendererClient content={project.content} />
     </div>
 }
