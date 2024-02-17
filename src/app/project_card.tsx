@@ -12,21 +12,22 @@ import ProjectCardModel from "@/lib/project_card_model"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
+import { Badge } from "@/components/ui/badge"
 
 export default function ProjectCard(model: ProjectCardModel) {
 
     return (
-        <Card>
+        <Card className="flex justify-between flex-col">
             <CardHeader>
                 <CardTitle>{model.title}</CardTitle>
                 {/* <CardDescription>Card Description</CardDescription> */}
             </CardHeader>
             <CardContent>
-                <p>Card Content</p>
+                <Badge variant="secondary">Badge</Badge>
             </CardContent>
             <CardFooter className="flex justify-end">
                 < Link href={`/projects/${model.id}`}>
-                    <Button variant="outline" >Button</Button>
+                    <Button variant="default" >mehr</Button>
                 </Link>
             </CardFooter>
         </Card>

@@ -3,6 +3,8 @@ import ProjectModel from "./project_model";
 import MyUrls from "./strapi_urls";
 
 
+
+
 export default class StrapiRepository {
 
     static headers = {
@@ -10,6 +12,7 @@ export default class StrapiRepository {
             'authorization': `Bearer ${process.env.STRAPI_TOKEN}`,
         }
     }
+
 
     static async getProjectCards(): Promise<ProjectCardModel[]> {
         const response = await fetch(MyUrls.getProjectCards(), StrapiRepository.headers);

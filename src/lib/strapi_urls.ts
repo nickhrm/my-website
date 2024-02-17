@@ -1,6 +1,6 @@
 export default class MyUrls {
 
-    static privateStrapiUrl = "http://strapi.nickhrm.de/api";
+    static privateStrapiUrl = "https://strapi.nickhrm.de/api";
 
 
     static getProjectCards() {
