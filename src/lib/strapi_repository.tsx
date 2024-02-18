@@ -23,13 +23,14 @@ export default class StrapiRepository {
 
         const json = await response.json();
 
-        const projects = json.data.map((project: any) => ProjectCardModel.fromJson(project.attributes.Title, project.id));
+        console.dir(json, { depth: 9 })
+
+        const projects = json.data.map((project: any) => ProjectCardModel.fromJson(project.attributes.Title, project.id, project.attributes.Tags));
         return projects;
     }
 
     static async getProject(id: string): Promise<ProjectModel> {
         const response = await fetch(MyUrls.getProject(id), StrapiRepository.headers);
-        console.log(MyUrls.getProject(id));
 
         if (!response.ok) {
             throw new Error('Network response was not ok');

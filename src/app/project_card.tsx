@@ -23,13 +23,13 @@ export default function ProjectCard(model: ProjectCardModel) {
                 {/* <CardDescription>Card Description</CardDescription> */}
             </CardHeader>
             <CardContent>
-                <Badge variant="secondary">Badge</Badge>
+                <Badge variant="secondary">{model.tags}</Badge>
             </CardContent>
             <CardFooter className="flex justify-end">
                 < Link href={`/projects/${model.id}`}>
                     <Button variant="default" >mehr</Button>
                 </Link>
             </CardFooter>
-        </Card>
+        </Card >
     )
 }

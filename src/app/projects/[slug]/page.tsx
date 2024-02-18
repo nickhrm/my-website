@@ -9,8 +9,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     const project = await StrapiRepository.getProject(params.slug)
 
-    console.dir(project, { depth: null })
-
 
     return <div>
         <BlockRendererClient content={project.content} />
