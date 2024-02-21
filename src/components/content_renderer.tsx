@@ -19,7 +19,7 @@ export default function BlockRendererClient({
         <BlocksRenderer content={content} blocks={{
 
             paragraph: ({ children }) => (
-                <p className="leading-7 [&:not(:first-child)]:mt-6 text-black">
+                <p className="leading-7 [&:not(:first-child)]:mt-6 text-black w-screen break-words max-w-full">
                     {children}
                 </p>
             ),
@@ -40,10 +40,19 @@ export default function BlockRendererClient({
                         </h4>
                 }
             },
-
-        }
-
-        }
+            image: ({ image }) => {
+                console.log(image);
+                return (
+                    <Image
+                        className="object-scale-down max-h-96 drop-shadow-md rounded-md m-auto"
+                        src={image.url}
+                        width={image.width}
+                        height={image.height}
+                        alt={image.alternativeText || ""}
+                    />
+                );
+            },
+        }}
             modifiers={{
                 bold: ({ children }) => <span className="font-bold">{children}</span>,
                 italic: ({ children }) => <span className="italic">{children}</span>,

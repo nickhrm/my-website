@@ -38,7 +38,7 @@ export default class StrapiRepository {
 
         const json = await response.json();
         const json_project = json.data[0];
-        const project = ProjectModel.fromJson(json_project.attributes.Title, json_project.id, json_project.attributes.Content);
+        const project = ProjectModel.fromJson(json_project.attributes.Title ?? "test", json_project.id, json_project.attributes.Content);
         return project;
     }
 }

@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" >
-      <body className={`${inter.className} w-full pt-6  flex flex-col  min-h-screen justify-between`}  >
+      <body className={`${inter.className} pt-6  flex flex-col  min-h-screen justify-between w-screen overflow-x-hidden`}  >
         <div className="flex flex-col">
           <div className="w-full flex flex-row justify-between align-baseline px-6">
             <Link href={"/"} className="">
@@ -35,7 +35,7 @@ export default function RootLayout({
           </div>
 
           <div className="mx-auto">
-            <div className=" max-w-5xl px-6 pt-12">
+            <div className="w-screen max-w-5xl px-6 pt-12 ">
               {children}
             </div>
           </div>
