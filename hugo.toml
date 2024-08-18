@@ -1,0 +1,4 @@
+baseURL = 'https://nickhrm.de/'
+languageCode = 'de-de'
+title = 'Nick Hermann'
+theme = 'ananke'
