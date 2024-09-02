@@ -5,7 +5,7 @@ import { Layout } from 'lucide-react';
 export const getStaticPaths = async () => {
   const workouts = await getCollection('workouts');
 
-  const paths = workouts.map((workout) => ({
+  const paths = workouts.map((workout:any) => ({
     params: { slug: workout.slug }, 
   }));
 
@@ -15,7 +15,7 @@ const { slug } = Astro.params;
 
 const workouts = await getCollection('workouts');
 
-const workout = workouts.find(w => w.slug === slug);
+const workout = workouts.find((w: { slug: any; }) => w.slug === slug);
 
 if (!workout) {
   throw new Error(`Workout "${slug}" not found`);
