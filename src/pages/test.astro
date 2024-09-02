@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+
+const allWorkoutPosts = await getCollection("workouts");
+
+
+---
+
+
+
+
+
+<Layout title="Nickhrm">
+	<main class="flex flex-col justify-center">
+		{allWorkoutPosts.map((entry:any) => <a href={"workouts/" +entry.slug} class="text-black">Test: {entry.data.type}</a>)}
+	</main>
+</Layout>
+

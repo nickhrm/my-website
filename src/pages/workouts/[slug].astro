@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import { Layout } from 'lucide-react';
+
+export const getStaticPaths = async () => {
+  const workouts = await getCollection('workouts');
+
+  const paths = workouts.map((workout) => ({
+    params: { slug: workout.slug }, 
+  }));
+
+  return paths; 
+};
+const { slug } = Astro.params;
+
+const workouts = await getCollection('workouts');
+
+const workout = workouts.find(w => w.slug === slug);
+
+if (!workout) {
+  throw new Error(`Workout "${slug}" not found`);
+}
+---
+
+
+  <h1>{workout.data.type}</h1>
+  <article>
+    {workout.body}
+  </article>
