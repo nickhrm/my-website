@@ -141,19 +141,19 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"workouts": {
-"workout-1.md": {
-	id: "workout-1.md";
-  slug: "workout-1";
+"Strength_1.md": {
+	id: "Strength_1.md";
+  slug: "strength_1";
   body: string;
   collection: "workouts";
-  data: InferEntrySchema<"workouts">
+  data: any
 } & { render(): Render[".md"] };
-"workout-2.md": {
-	id: "workout-2.md";
-  slug: "workout-2";
+"Strength_2.md": {
+	id: "Strength_2.md";
+  slug: "strength_2";
   body: string;
   collection: "workouts";
-  data: InferEntrySchema<"workouts">
+  data: any
 } & { render(): Render[".md"] };
 };
 
@@ -165,5 +165,5 @@ declare module 'astro:content' {
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;
 
-	export type ContentConfig = typeof import("../../src/content/config.js");
+	export type ContentConfig = never;
 }

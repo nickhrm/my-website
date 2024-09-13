@@ -12,25 +12,36 @@ import {
   CardTitle,} from '@/components/shadcn-ui/card';
 
 const workouts = await getCollection('workouts');
+
+function truncateString(str: String) {
+	if (str.length > 10) {
+	  return str.slice(0, 10) + '...';
+	}
+	return str;
+  }
+  
 ---
 
 <Layout title="Nickhrm">
-	<main class="flex flex-col justify-center">
-		<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center p-9">Blog zu Functional Fitness und IT</h1>
-		<Badge className="self-center">Neu</Badge>
-		{workouts.map((workout) => (
-			<Card>
-  				<CardHeader>
-    				<CardTitle>Card Title</CardTitle>
-    				<CardDescription>Card Description</CardDescription>
-  				</CardHeader>
-  				<CardContent>
-    				<p>Card Content</p>
-  				</CardContent>
-  				<CardFooter>
-    			<a href={"/workouts/"+ workout.slug}>Go To Workout</a>
-  				</CardFooter>
-			</Card>
-		))}
+	<main class="flex flex-col justify-center px-4">
+		<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center p-9">Weekly Hyrox Trainingplans</h1>
+		
+		<div class="grid grid-cols-3 gap-4">
+			{workouts.map((workout) => (
+				<Card className='mb-4'>
+					  <CardHeader>
+						<CardTitle>{workout.slug}</CardTitle>
+						<CardDescription>Card Description</CardDescription>
+					  </CardHeader>
+					  <CardContent>
+						<p>{truncateString(workout.body)}</p>
+					  </CardContent>
+					  <CardFooter>
+					<a href={"/workouts/"+ workout.slug}>Go To Workout</a>
+					  </CardFooter>
+				</Card>
+			))}
+		</div>
+		
 	</main>
 </Layout>
