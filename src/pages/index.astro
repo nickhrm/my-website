@@ -1,47 +1,66 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Badge } from '@/components/shadcn-ui/badge';
-import '@/styles/styles.css';
-import { getCollection } from 'astro:content';
+import BlogCard from '@/components/BlogCard.astro'
+import Container from '@/components/Container.astro'
+import Link from '@/components/Link.astro'
+import { buttonVariants } from '@/components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,} from '@/components/shadcn-ui/card';
+  CardTitle,
+} from '@/components/ui/card'
+import { SITE } from '@/consts'
+import Layout from '@/layouts/Layout.astro'
+import { getCollection } from 'astro:content'
 
-const workouts = await getCollection('workouts');
-
-function truncateString(str: String) {
-	if (str.length > 10) {
-	  return str.slice(0, 10) + '...';
-	}
-	return str;
-  }
-  
+const blog = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE)
 ---
 
-<Layout title="Nickhrm">
-	<main class="flex flex-col justify-center px-4">
-		<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-center p-9">Weekly Hyrox Trainingplans</h1>
-		
-		<div class="grid grid-cols-3 gap-4">
-			{workouts.map((workout) => (
-				<Card className='mb-4'>
-					  <CardHeader>
-						<CardTitle>{workout.slug}</CardTitle>
-						<CardDescription>Card Description</CardDescription>
-					  </CardHeader>
-					  <CardContent>
-						<p>{truncateString(workout.body)}</p>
-					  </CardContent>
-					  <CardFooter>
-					<a href={"/workouts/"+ workout.slug}>Go To Workout</a>
-					  </CardFooter>
-				</Card>
-			))}
-		</div>
-		
-	</main>
+<Layout title="Home" description={SITE.DESCRIPTION}>
+  <Container class="flex flex-col gap-y-6">
+    <section>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-3xl">Hyrox Training Blog</CardTitle>
+          
+          
+        </CardHeader>
+        <CardContent>
+          <p class="mb-2 text-sm text-muted-foreground">
+            This blog is about Hyrox and training planning in the functional fitness area.
+          </p>
+          <p class="text-sm text-muted-foreground">
+            There are posts about my weekly training sessions and other posts 
+          </p>
+        </CardContent>
+      </Card>
+    </section>
+    <section class="flex flex-col gap-y-4">
+      <h2 class="text-2xl font-bold">Latest posts</h2>
+      <ul class="not-prose flex flex-col gap-y-4">
+        {
+          blog.map((post) => (
+            <li>
+              <BlogCard entry={post} />
+            </li>
+          ))
+        }
+      </ul>
+      <div class="flex justify-center">
+        <Link
+          href="/blog"
+          class={buttonVariants({ variant: 'ghost' }) + ' group'}
+        >
+          See all posts <span
+            class="ml-1.5 transition-transform group-hover:translate-x-1"
+            >&rarr;</span
+          >
+        </Link>
+      </div>
+    </section>
+  </Container>
 </Layout>
