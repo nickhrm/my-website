@@ -2,6 +2,7 @@
 import BlogCard from '@/components/BlogCard.astro'
 import Container from '@/components/Container.astro'
 import Link from '@/components/Link.astro'
+import { badgeVariants } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'
 import {
   Card,
@@ -13,34 +14,48 @@ import {
 import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import { Icon } from 'astro-icon/components'
+
 
 const blog = (await getCollection('blog'))
   .filter((post) => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE)
+
+
+const tags = blog
+  .flatMap((post) => post.data.tags)
+  .filter((tag, index, self) => self.indexOf(tag) === index)
 ---
 
 <Layout title="Home" description={SITE.DESCRIPTION}>
   <Container class="flex flex-col gap-y-6">
     <section>
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-3xl">Hyrox Training Blog</CardTitle>
-          
-          
-        </CardHeader>
-        <CardContent>
-          <p class="mb-2 text-sm text-muted-foreground">
-            This blog is about Hyrox and training planning in the functional fitness area.
-          </p>
-          <p class="text-sm text-muted-foreground">
-            There are posts about my weekly training sessions and other posts 
-          </p>
-        </CardContent>
-      </Card>
+      <h1 class="text-3xl font-bold text-center">
+        Programs and Resources for Hybrid Athletes
+      </h1>
+      <h2 class="text-center">
+        All About Hybrid Training, Hyrox, Functional Fitness, Strength, Recovery, Progress
+      </h2>
+    </section>
+    <section>
+      <div class="flex flex-col gap-4">
+        <div class="flex flex-wrap gap-2">
+          {
+            tags.map((tag) => (
+              <Link
+                href={`/tags/${tag}`}
+                class={badgeVariants({ variant: 'secondary' })}
+              >
+                <Icon name="lucide:hash" class="size-3 -translate-x-0.5" />
+                {tag}
+              </Link>
+            ))
+          }
+        </div>
+      </div>
     </section>
     <section class="flex flex-col gap-y-4">
-      <h2 class="text-2xl font-bold">Latest posts</h2>
       <ul class="not-prose flex flex-col gap-y-4">
         {
           blog.map((post) => (

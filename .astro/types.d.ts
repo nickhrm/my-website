@@ -152,13 +152,6 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
-"2024/workout_plan_1.mdx": {
-	id: "2024/workout_plan_1.mdx";
-  slug: "2024/workout_plan_1";
-  body: string;
-  collection: "blog";
-  data: InferEntrySchema<"blog">
-} & { render(): Render[".mdx"] };
 };
 "projects": {
 "project-a.md": {
