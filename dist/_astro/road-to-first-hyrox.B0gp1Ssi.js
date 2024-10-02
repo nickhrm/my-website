@@ -1,11 +1,4 @@
----
-title: '6-Day Hyrox Training Program'
-description: 'A 6-day training program to prepare for a Hyrox event.'
-date: 2024-09-04 
-tags: [TrainingProgram]
-authors: ['Nick Hermann', ]
----
-
+const e="2024/road-to-first-hyrox.mdx",t="blog",n="2024/road-to-first-hyrox",o=`
 
 Credits: This training program is largely based on the training recommendations of Joel Jamieson. The most important blog posts from my point of view are the following:
 - [The Ultimate Conditioning Template](https://8weeksout.com/2018/08/23/the-ultimate-conditioning-template/) 
@@ -48,3 +41,4 @@ This workout is the same as the 1st recovery workout.
 
 Thanks for reading! 
 
+`,i={title:"6-Day Hyrox Training Program",description:"A 6-day training program to prepare for a Hyrox event.",date:new Date(1725408e6),tags:["TrainingProgram"],authors:["Nick Hermann"]},r={type:"content",filePath:"/home/nick/Documents/my-website/src/content/blog/2024/road-to-first-hyrox.mdx",rawData:void 0};export{r as _internal,o as body,t as collection,i as data,e as id,n as slug};
