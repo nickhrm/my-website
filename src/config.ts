@@ -1,64 +1,3 @@
-<div align="center">
-    <h1 align="center">Minimal portfolio template for Astro</a></h1>
-    <p align="center">Open source minimalistic portfolio template created with <a href="https://astro.build/" target="_blank">Astro</a> and <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>. Design inspired by <a href="https://www.b-r.io/" target="_blank">Brian Ruiz</a> </p>
-  <a href="https://minimal-portfolio.witzdam.com/" target="_blank" align="center">
-    <img src="https://legende.cc/ss/oNWKICeAR1.png" alt="Theme preview" width="975"/>
-    <img src="https://legende.cc/ss/ygdmeIzQIp.png" alt="Lighthouse score 100" />
-</a>
-</div>
-<br />
-
-[Preview](https://minimal-portfolio.witzdam.com/)
-
-## 🔥 Features
-
-- Fully responsive
-- Perfect Google Lighthouse score
-- Fast and SEO optimized blog with Markdown support
-- Fully customizable
-- Home, About, Projects and Blog pages
-- Self host ready
-
-## 🚀 Getting started
-
-1. Clone/download the repo
-
-```
-git clone https://github.com/TimWitzdam/astro-minimal-portfolio-template.git
-cd astro-minimal-portfolio-template
-```
-
-2. Install dependencies
-
-```
-npm i
-```
-
-3. Run the development server
-
-```
-npm run dev
-```
-
-4. [Configure](#🔧-configuration) your instance
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:4321`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
-
-## 🔧 Configuration
-
-This is the default example config file, which allows you to change pretty much anything content related on the site.
-
-```JS
-// src/config.ts
 import type {
   NavBarLink,
   SocialLink,
@@ -70,9 +9,9 @@ import type {
 } from "./types/config";
 
 export const identity: Identity = {
-  name: "Tim Witzdam",
-  logo: "/logo.webp",
-  email: "tim@witzdam.com",
+  name: "Nick Hermann",
+  logo: "/profile.webp",
+  email: "kontakt@nickhrm.de",
 };
 
 export const navBarLinks: NavBarLink[] = [
@@ -97,13 +36,13 @@ export const navBarLinks: NavBarLink[] = [
 export const socialLinks: SocialLink[] = [
   {
     title: "GitHub",
-    url: "https://github.com/TimWitzdam",
+    url: "https://github.com/nickhrm",
     icon: "mdi:github",
     external: true,
   },
   {
     title: "Mail",
-    url: "mailto:tim@witzdam.com",
+    url: "mailto:kontakt@nickhrm.de",
     icon: "mdi:email",
   },
 ];
@@ -111,14 +50,14 @@ export const socialLinks: SocialLink[] = [
 // Home (/)
 export const homePageContent: HomePageContent = {
   seo: {
-    title: "Tim Witzdam",
+    title: "Nick Hermann",
     description:
       "Full time student from Germany who loves building cool things using code.",
     image: identity.logo,
   },
   role: "Student & Software Developer",
   description:
-    "I'm Tim Witzdam, a full time student from Germany who also loves building cool things using code.",
+    "I'm Nick Hermann, a full time student from Germany who also loves building cool things using code.",
   socialLinks: socialLinks,
   links: [
     {
@@ -194,27 +133,27 @@ export const projectsPageContent: ProjectPageContent = {
   },
   subtitle: "Check out what I've been working on.",
   projects: [
-    {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
-      year: "2024",
-      url: "https://github.com/TimWitzdam",
-    },
-    {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
-      year: "2024",
-      url: "https://github.com/TimWitzdam",
-    },
-    {
-      title: "Project 1",
-      description: "Project 1 Description",
-      image: "/demo-2.jpg",
-      year: "2024",
-      url: "https://github.com/TimWitzdam",
-    },
+    // {
+    //   title: "Project 1",
+    //   description: "Project 1 Description",
+    //   image: "/demo-2.jpg",
+    //   year: "2024",
+    //   url: "https://github.com/TimWitzdam",
+    // },
+    // {
+    //   title: "Project 1",
+    //   description: "Project 1 Description",
+    //   image: "/demo-2.jpg",
+    //   year: "2024",
+    //   url: "https://github.com/TimWitzdam",
+    // },
+    // {
+    //   title: "Project 1",
+    //   description: "Project 1 Description",
+    //   image: "/demo-2.jpg",
+    //   year: "2024",
+    //   url: "https://github.com/TimWitzdam",
+    // },
   ],
 };
 
@@ -227,10 +166,3 @@ export const blogPageContent: BlogPageContent = {
   },
   subtitle: "Thoughts, stories and ideas.",
 };
-```
-
-## 👀 Any questions or problems?
-
-Feel free to open an issue or even contribute by fixing a problem.
-
-I'm also available via mail: [contact@witzdam.com](mailto:contact@witzdam.com)

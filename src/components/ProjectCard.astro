@@ -1,41 +1,34 @@
 ---
-import Link from '@/components/Link.astro'
-import { Badge } from '@/components/ui/badge'
-import { Image } from 'astro:assets'
-import type { CollectionEntry } from 'astro:content'
+import { Image } from "astro:assets";
+import type { Project } from "../types/config";
+import { Markdown } from "@astropub/md";
 
-type Props = {
-  project: CollectionEntry<'projects'>
-}
+type Props = Project;
 
-const { project } = Astro.props
+const { title, description, image, year, url } = Astro.props;
 ---
 
-<div
-  class="overflow-hidden rounded-xl border transition-colors duration-300 ease-in-out hover:bg-secondary/50"
+<a
+  href={url}
+  target="_blank"
+  class="sm:py-5 py-10 flex flex-col sm:flex-row gap-6 group-hover:opacity-60 hover:!opacity-100 transition-opacity"
 >
-  <Link href={project.data.link} class="block" external>
+  <div class="h-full bg-gray-700 rounded-lg aspect-video sm:h-[150px]">
     <Image
-      src={project.data.image}
-      alt={project.data.name}
-      width={400}
-      height={200}
-      class="w-full object-cover"
+      width={1920}
+      height={1080}
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover rounded-lg aspect-video"
     />
-    <div class="p-4">
-      <h3 class="mb-2 text-lg font-semibold">{project.data.name}</h3>
-      <p class="mb-4 text-sm text-muted-foreground">
-        {project.data.description}
-      </p>
-      <div class="flex flex-wrap gap-2">
-        {
-          project.data.tags.map((tag) => (
-            <Badge variant="secondary" showHash={false}>
-              {tag}
-            </Badge>
-          ))
-        }
-      </div>
+  </div>
+  <div>
+    <div class="flex items-center gap-1 mb-2">
+      <h2 class="font-medium">{title}</h2>
+      <span class="opacity-60">· {year}</span>
     </div>
-  </Link>
-</div>
+    <div class="opacity-60">
+      <Markdown of={description} />
+    </div>
+  </div>
+</a>
