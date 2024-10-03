@@ -74,7 +74,7 @@ export const homePageContent: HomePageContent = {
 // About (/about)
 export const aboutPageContent: AboutPageContent = {
   seo: {
-    title: "About | Tim Witzdam",
+    title: "About | Nick Hermann",
     description:
       "Full time student from Germany who loves building cool things using code.",
     image: identity.logo,
@@ -82,10 +82,7 @@ export const aboutPageContent: AboutPageContent = {
   subtitle: "Some information about myself",
   about: {
     description: `
-I'm Tim Witzdam, a full time student from Germany who also loves building cool things using code.
-<br/><br/>
-Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque placeat est architecto tempora voluptatem sit suscipit aspernatur? <br/><br/>
-Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium consectetur nemo vero officia itaque.`, // Markdown is supported
+I'm Nick Hermann, a full time student from Germany who also loves building cool things using code.`,
     image_l: {
       url: "/demo-1.jpg",
       alt: "Left Picture",
@@ -99,23 +96,15 @@ Facere quibusdam reiciendis, distinctio sunt praesentium error accusantium conse
     description: `I've worked with a variety of technologies and tools to build cool things. Here are some of the projects I've worked on.`, // Markdown is supported
     items: [
       {
-        title: "Software Developer",
+        title: "Software Engineer and Product Developer",
         company: {
-          name: "Freelance",
-          image: "/logo.webp",
-          url: "https://github.com/TimWitzdam",
+          name: "Flutter, NextJS, PHP, NodeJS, Figma",
+          image: "/Pixel-Logo.png",
+          url: "https://pixel-it-systems.de",
         },
         date: "2021 - Present",
       },
-      {
-        title: "Software Developer",
-        company: {
-          name: "Freelance",
-          image: "/logo.webp",
-          url: "https://github.com/TimWitzdam",
-        },
-        date: "2019 - 2021",
-      },
+     
     ],
   },
   connect: {
