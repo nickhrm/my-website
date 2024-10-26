@@ -1,89 +1,42 @@
 ---
-import { Image } from "astro:assets";
 import Layout from '../layouts/Layout.astro';
-import { homePageContent, identity } from "../config";
-import SocialLink from "../components/SocialLink.astro";
-import Link from "../components/Link.astro";
-import { getCollection } from "astro:content";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button,Card } from 'react-bootstrap';
+import {getCollection, z, type CollectionEntry} from "astro:content"
+import { Image } from 'astro:assets';
 
-const posts = await getCollection("posts");
-posts.sort((a, b) => {
-  const dateA = new Date(a.data.pubDate).getTime();
-  const dateB = new Date(b.data.pubDate).getTime();
-  return dateB - dateA;
-});
-posts.splice(2)
+
+const links = await getCollection("links");
+const projects = await getCollection("projects");
+const vita = await getCollection("vita");
 ---
 
-<Layout seo={homePageContent.seo}>
-  <section class="mt-10 max-w-2xl mx-auto px-6">
-    <h1 class="font-bold text-3xl mb-1">{identity.name}</h1>
-    <p class="opacity-60 mb-10">{homePageContent.role}</p>
-    <div class="flex flex-col min-[520px]:flex-row gap-6 mb-8">
-      <Image
-        src={identity.logo}
-        alt={identity.name}
-        width={100}
-        height={100}
-        class="rounded-full"
-      />
-      <div class="flex flex-col justify-center gap-2 w-fit">
-        {
-          homePageContent.socialLinks.map((link) => (
-            <SocialLink
-              title={link.title}
-              url={link.url}
-              icon={link.icon}
-              external={link.external}
-            />
-          ))
-        }
-      </div>
-    </div>
-    <p class="max-w-md mb-8">
-      {homePageContent.description}
-    </p>
-    <div class="flex items-center gap-4 w-fit">
-      {
-        homePageContent.links.map((link) => (
-          <Link text={link.title} href={link.url} external={link.external} />
-        ))
-      }
-    </div>
-  </section>
-  <section class="mt-20 max-w-2xl mx-auto px-6">
-    <h2 class="mb-8">Latest Posts</h2>
-    <div class="grid grid-cols-1 gap-10 sm:gap-6 mb-10">
-      {
-        posts.map((post) => (
-          <a
-            href={`/blog/${post.slug}`}
-            class=" sm:flex sm:flex-row-reverse sm:justify-between sm:gap-6 post"
-          >
-            <Image
-              src={post.data.image.url}
-              alt={post.data.image.url}
-              width={100}
-              height={100}
-              class={"rounded-lg w-[100px] h-[100px] object-cover"}
-            />
-            <div class="mt-4 sm:my-auto">
-              <p class="opacity-60 mb-2">
-                {post.data.pubDate.toLocaleDateString()}
-              </p>
-              <h3 class="font-medium hover-underline">{post.data.title}</h3>
-              <p class="text-sm opacity-60 mt-2 mb-3">{post.data.description}</p>
-            </div>
-          </a>
-        ))
-      }
-    </div>
-    <div class="text-center">
-      <a
-        href="/blog"
-        class="underline underline-offset-4 opacity-60 hover:opacity-100 transition-opacity"
-        >View all</a
-      >
-    </div>
-  </section>
+<Layout title="Welcome to Astro.">
+	
+	<main class="flex flex-col align-middle">
+		<h1 class="text-center">Nick Hermann</h1>
+		{links.map((link) => (
+			<Button variant='outline-secondary' className='mb-2' href={link.data.url}>
+				<div class="flex flex-row justify-between">
+					<Image src={link.data.icon} alt={link.data.text} height={24}/>
+
+					{link.data.text}
+					<Image class="opacity-0" src={link.data.icon} alt={link.data.text} height={24}/>
+				</div>
+			</Button>
+		))}
+		<div class="h-4"></div>
+		<h2 class="text-center">Projects</h2>
+		{projects.map((project) => (
+			<Card className='mb-2'>
+				<Card.Body>
+					<Card.Title>{project.data.title}</Card.Title>
+					<Card.Text>{project.data.description}</Card.Text>
+				</Card.Body>
+			</Card>
+		))}
+
+
+	</main>
 </Layout>
+

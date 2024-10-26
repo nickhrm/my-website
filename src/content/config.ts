@@ -1,21 +1,40 @@
-// Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
-// Define a `type` and `schema` for each collection
-const postsCollection = defineCollection({
-  type: "content",
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.date(),
-    description: z.string(),
-    author: z.string(),
-    image: z.object({
-      url: z.string(),
-      alt: z.string(),
+import {defineCollection, z } from "astro:content";
+import {format} from "date-fns"
+
+
+const linksCollection = defineCollection({
+    schema:({image}) => z.object({
+        url: z.string(),
+        text: z.string(),
+        icon: image(),
     }),
-    readingTime: z.number().optional(),
-  }),
 });
-// Export a single `collections` object to register your collection(s)
+
+const projectsCollection = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        description: z.string(),
+        tags: z.array(z.string()),
+    }),
+
+});
+
+const vita = defineCollection({
+    schema: z.object({
+        title: z.string(),
+        startDate: z
+        .string()
+        .transform(str => format(new Date(str), "dd.mm.yyyy")),
+        endDate: z
+        .string()
+        .transform(str => format(new Date(str), "dd.mm.yyyy")),
+    }),
+
+});
+
+
 export const collections = {
-  posts: postsCollection,
+    links: linksCollection,
+    projects: projectsCollection,
+    vita: vita,
 };

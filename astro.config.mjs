@@ -1,17 +1,13 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import icon from "astro-icon";
-import { remarkReadingTime } from "./remark-reading-time.mjs";
-import node from "@astrojs/node";
+// @ts-check
+import { defineConfig } from 'astro/config';
+
+import react from '@astrojs/react';
+
+
+import tailwind from '@astrojs/tailwind';
+
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), icon()],
-  output: "server",
-  adapter: node({
-    mode: "standalone",
-  }),
-  markdown: {
-    remarkPlugins: [remarkReadingTime],
-  },
+  integrations: [react(), tailwind()]
 });
