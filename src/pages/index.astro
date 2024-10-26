@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button,Card } from 'react-bootstrap';
+import { Badge, Button,Card } from 'react-bootstrap';
 import {getCollection, z, type CollectionEntry} from "astro:content"
 import { Image } from 'astro:assets';
 
@@ -32,6 +32,9 @@ const vita = await getCollection("vita");
 				<Card.Body>
 					<Card.Title>{project.data.title}</Card.Title>
 					<Card.Text>{project.data.description}</Card.Text>
+					{project.data.tags.map((tag) => (
+						<Badge  className='mr-2'>{tag}</Badge>
+					))}
 				</Card.Body>
 			</Card>
 		))}
