@@ -44,6 +44,7 @@ const vita = await getCollection("vita");
 			<Card className='mb-2'>
 				<Card.Body>
 					<Card.Title>{entry.data.title}</Card.Title>
+					<Image class='h-20 object-contain' src={entry.data.image} alt={entry.data.title}></Image>
 					<Card.Text>{entry.data.startDate + " - " + entry.data.endDate }</Card.Text>
 					
 				</Card.Body>

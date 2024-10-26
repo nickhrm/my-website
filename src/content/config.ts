@@ -20,11 +20,11 @@ const projectsCollection = defineCollection({
 });
 
 const vita = defineCollection({
-    schema: z.object({
+    schema: ({image}) => z.object({
         title: z.string(),
         startDate: z.string(),
         endDate: z.string(),
-        image: z.string(),
+        image: image(),
     }),
 
 });
