@@ -7,6 +7,7 @@ const linksCollection = defineCollection({
         url: z.string(),
         text: z.string(),
         icon: image(),
+        order: z.number(),
     }),
 });
 

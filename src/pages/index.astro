@@ -6,7 +6,8 @@ import {getCollection, z, type CollectionEntry} from "astro:content"
 import { Image } from 'astro:assets';
 
 
-const links = await getCollection("links");
+const linksRaw = await getCollection("links");
+const links = linksRaw.sort((a, b) => a.data.order - b.data.order);
 const projects = await getCollection("projects");
 const vita = await getCollection("vita");
 ---
@@ -45,7 +46,7 @@ const vita = await getCollection("vita");
 				<Card.Body>
 					<Card.Title>{entry.data.title}</Card.Title>
 					<Image class='h-20 object-contain' src={entry.data.image} alt={entry.data.title}></Image>
-					<Card.Text>{entry.data.startDate + " - " + entry.data.endDate }</Card.Text>
+					<Card.Text>{entry.data.endDate  + " - " + entry.data.startDate}</Card.Text>
 					
 				</Card.Body>
 			</Card>
