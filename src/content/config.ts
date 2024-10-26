@@ -22,12 +22,9 @@ const projectsCollection = defineCollection({
 const vita = defineCollection({
     schema: z.object({
         title: z.string(),
-        startDate: z
-        .string()
-        .transform(str => format(new Date(str), "dd.mm.yyyy")),
-        endDate: z
-        .string()
-        .transform(str => format(new Date(str), "dd.mm.yyyy")),
+        startDate: z.string(),
+        endDate: z.string(),
+        image: z.string(),
     }),
 
 });

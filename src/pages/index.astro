@@ -38,8 +38,17 @@ const vita = await getCollection("vita");
 				</Card.Body>
 			</Card>
 		))}
-
-
+		<div class="h-4"></div>
+		<h2 class="text-center">Vita</h2>
+		{vita.map((entry) => (
+			<Card className='mb-2'>
+				<Card.Body>
+					<Card.Title>{entry.data.title}</Card.Title>
+					<Card.Text>{entry.data.startDate + " - " + entry.data.endDate }</Card.Text>
+					
+				</Card.Body>
+			</Card>
+		))}
 	</main>
 </Layout>
 

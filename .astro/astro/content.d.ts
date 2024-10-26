@@ -179,14 +179,22 @@ declare module 'astro:content' {
   data: InferEntrySchema<"projects">
 } & { render(): Render[".md"] };
 };
-"vita": Record<string, {
-  id: string;
-  slug: string;
+"vita": {
+"pixel.md": {
+	id: "pixel.md";
+  slug: "pixel";
   body: string;
   collection: "vita";
-  data: InferEntrySchema<"vita">;
-  render(): Render[".md"];
-}>;
+  data: InferEntrySchema<"vita">
+} & { render(): Render[".md"] };
+"uni-hannover.md": {
+	id: "uni-hannover.md";
+  slug: "uni-hannover";
+  body: string;
+  collection: "vita";
+  data: InferEntrySchema<"vita">
+} & { render(): Render[".md"] };
+};
 
 	};
 
