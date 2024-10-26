@@ -17,7 +17,7 @@ const vita = await getCollection("vita");
 	<main class="flex flex-col align-middle">
 		<h1 class="text-center">Nick Hermann</h1>
 		{links.map((link, index) => (
-			<Button variant={index == 0 ? 'primary' : 'outline-primary'} className='mb-2' href={link.data.url}>
+			<Button variant={index == 0 ? 'primary' : 'outline-primary'} className='mb-3' href={link.data.url}>
 				<div class="flex flex-row justify-between">
 					<Image src={link.data.icon} alt={link.data.text} height={24}/>
 
