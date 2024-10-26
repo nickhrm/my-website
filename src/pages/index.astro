@@ -27,14 +27,14 @@ const vita = await getCollection("vita");
 			</Button>
 		))}
 		<div class="h-4"></div>
-		<h2 class="text-center">Projects</h2>
+		<h2 class="text-center">Projekte</h2>
 		{projects.map((project) => (
 			<Card className='mb-2'>
 				<Card.Body>
 					<Card.Title>{project.data.title}</Card.Title>
 					<Card.Text>{project.data.description}</Card.Text>
 					{project.data.tags.map((tag) => (
-						<Badge  className='mr-2'>{tag}</Badge>
+						<Badge  className='mr-2 mb-2'>{tag}</Badge>
 					))}
 				</Card.Body>
 			</Card>
