@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Badge, Button,Card } from 'react-bootstrap';
-import {getCollection, z, type CollectionEntry} from "astro:content"
+import {getCollection} from "astro:content"
 import { Image } from 'astro:assets';
 
 
@@ -19,10 +19,10 @@ const vita = await getCollection("vita");
 		{links.map((link, index) => (
 			<Button variant={index == 0 ? 'primary' : 'outline-primary'} className='mb-3' href={link.data.url}>
 				<div class="flex flex-row justify-between">
-					<Image src={link.data.icon} alt={link.data.text} height={24}/>
+					<Image src={link.data.icon} alt={link.data.text} height={24} loading="eager"/>
 
 					{link.data.text}
-					<Image class="opacity-0" src={link.data.icon} alt={link.data.text} height={24}/>
+					<div class="w-[24px]"></div>
 				</div>
 			</Button>
 		))}
