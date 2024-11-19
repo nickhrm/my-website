@@ -1,10 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Badge, Button,Card } from 'react-bootstrap';
-import {getCollection} from "astro:content"
-import { Image } from 'astro:assets';
-
+import Layout from "../layouts/Layout.astro";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Badge, Button, Card } from "react-bootstrap";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 
 const linksRaw = await getCollection("links");
 const links = linksRaw.sort((a, b) => a.data.order - b.data.order);
@@ -13,45 +12,71 @@ const vita = await getCollection("vita");
 ---
 
 <Layout title="Nick Hermann">
-	
-	<main class="flex flex-col align-middle">
-		<h1 class="text-center">Nick Hermann</h1>
-		{links.map((link, index) => (
-			<Button variant={index == 0 ? 'primary' : 'outline-primary'} className='mb-3' href={link.data.url}>
-				<div class="flex flex-row justify-between">
-					<Image src={link.data.icon} alt={link.data.text} height={24} loading="eager"/>
+  <main class="flex flex-col align-middle">
+    <h1 class="text-center">Nick Hermann</h1>
+    <div class="w-full flex flex-col justify-stretch">
+      {
+        links.map((link, index) => (
+          <a href={link.data.url}>
+            <button
+              class={
+                index == 0
+                  ? "btn btn-primary"
+                  : "btn" + " mb-3 "
+              }
+            >
+              <div class="flex flex-row justify-between">
+                <Image
+                  src={link.data.icon}
+                  alt={link.data.text}
+                  height={24}
+                  loading="eager"
+                />
+                <div class="w-3 h-3" />
+                {link.data.text}
 
-					{link.data.text}
-					<div class="w-[24px]"></div>
-				</div>
-			</Button>
-		))}
-		<div class="h-6"></div>
-		<h2 class="text-center">Projekte</h2>
-		{projects.map((project) => (
-			<Card className='mb-3'>
-				<Card.Body>
-					<Card.Title>{project.data.title}</Card.Title>
-					<Card.Text>{project.data.description}</Card.Text>
-					{project.data.tags.map((tag) => (
-						<Badge  className='mr-2 mb-2'>{tag}</Badge>
-					))}
-				</Card.Body>
-			</Card>
-		))}
-		<div class="h-6"></div>
-		<h2 class="text-center">Vita</h2>
-		{vita.map((entry) => (
-			<Card className='mb-3'>
-				<Card.Body>
-					<Image class='h-20 object-contain' src={entry.data.image} alt={entry.data.title}></Image>
-
-					<Card.Title>{entry.data.title}</Card.Title>
-					<Card.Text>{entry.data.endDate  + " - " + entry.data.startDate}</Card.Text>
-					
-				</Card.Body>
-			</Card>
-		))}
-	</main>
+                <div class="w-[24px]" />
+              </div>
+            </button>
+          </a>
+        ))
+      }
+    </div>
+    <div class="h-6"></div>
+    <h2 class="text-center">Projekte</h2>
+    {
+      projects.map((project) => (
+        <div class="card mb-3">
+          <div class="card-body">
+            <h2 class="card-title">{project.data.title}</h2>
+            <h3 class="card-body">{project.data.description}</h3>
+            <div class="card-actions">
+              {project.data.tags.map((tag) => (
+                <div class="badge">{tag}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))
+    }
+    <div class="h-6"></div>
+    <h2 class="text-center">Vita</h2>
+    {
+      vita.map((entry) => (
+        <div class="card mb-3">
+          <figure>
+            <Image
+              class="h-20 object-contain"
+              src={entry.data.image}
+              alt={entry.data.title}
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">{entry.data.title}</h2>
+            <p>{entry.data.endDate + " - " + entry.data.startDate}</p>
+          </div>
+        </div>
+      ))
+    }
+  </main>
 </Layout>
-
