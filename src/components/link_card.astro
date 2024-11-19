@@ -1,0 +1,31 @@
+---
+
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  link: CollectionEntry<'links'>;
+  isPrimary: boolean;
+}
+
+const { link, isPrimary } = Astro.props;
+
+
+---
+
+
+<a href={link.data.url}>
+    <button class={(isPrimary ? "btn btn-primary" : "btn") + " mb-3 w-full"}>
+      <div class="flex flex-row justify-between">
+        <Image
+          src={link.data.icon}
+          alt={link.data.text}
+          height={24}
+          width={24}
+          loading="eager"
+        />
+        <div class="w-3 h-3" />
+        {link.data.text}
+
+        <div class="w-[24px]" />
+      </div>
+    </button>
+  </a>

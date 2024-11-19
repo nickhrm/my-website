@@ -1,0 +1,22 @@
+---
+
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+---
+
+
+<div class="card mb-3">
+    <div class="card-body">
+      <h2 class="card-title">{project.data.title}</h2>
+      <h3 class="card-body">{project.data.description}</h3>
+      <div class="card-actions">
+        {project.data.tags.map((tag:any) => (
+          <div class="badge">{tag}</div>
+        ))}
+      </div>
+    </div>
+  </div>
