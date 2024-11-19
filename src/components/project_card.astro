@@ -14,7 +14,7 @@ const { project } = Astro.props;
       <h2 class="card-title">{project.data.title}</h2>
       <h3 class="card-body">{project.data.description}</h3>
       <div class="card-actions">
-        {project.data.tags.map((tag:any) => (
+        {project.data.tags.map((tag) => (
           <div class="badge">{tag}</div>
         ))}
       </div>
