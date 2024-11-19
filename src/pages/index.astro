@@ -12,9 +12,10 @@ const vita = await getCollection("vita");
 ---
 
 <Layout title="Nick Hermann">
-  <main class="flex flex-col align-middle prose">
-    <h1 class="text-center ">Nick Hermann</h1>
-    <div class="w-full flex flex-col">
+  <main class="flex flex-col w-full">
+    <h1 class="text-center">Nick Hermann</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       {
         links.map((link, index) => (
           <LinkCard link={link} isPrimary={index === 0} />
@@ -23,25 +24,30 @@ const vita = await getCollection("vita");
     </div>
     <div class="h-6"></div>
     <h2 class="text-center">Projekte</h2>
-    {projects.map((project) => <ProjectCard project={project} />)}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
     <div class="h-6"></div>
-    <h2 class="text-center">Vita</h2>
-    {
-      vita.map((entry) => (
-        <div class="card mb-3">
-          <figure>
-            <Image
-              class="h-20 object-contain"
-              src={entry.data.image}
-              alt={entry.data.title}
-            />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">{entry.data.title}</h2>
-            <p>{entry.data.endDate + " - " + entry.data.startDate}</p>
+    <h2 class="text-center prose">Vita</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      {
+        vita.map((entry) => (
+          <div class="card ard card-bordered mb-3 shadow-sm ">
+            <figure>
+              <Image
+                class="h-20 object-contain"
+                src={entry.data.image}
+                alt={entry.data.title}
+              />
+            </figure>
+            <div class="card-body">
+              <h2 class="card-title">{entry.data.title}</h2>
+              <p>{entry.data.endDate + " - " + entry.data.startDate}</p>
+            </div>
           </div>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
   </main>
 </Layout>
