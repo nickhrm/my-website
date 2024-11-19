@@ -1,5 +1,5 @@
 ---
-
+import { Image } from "astro:assets";
 import type { CollectionEntry } from 'astro:content';
 interface Props {
   link: CollectionEntry<'links'>;
@@ -14,7 +14,7 @@ const { link, isPrimary } = Astro.props;
 
 <a href={link.data.url}>
     <button class={(isPrimary ? "btn btn-primary" : "btn") + " mb-3 w-full"}>
-      <div class="flex flex-row justify-between">
+      <div class="flex flex-row justify-between  text-base">
         <Image
           src={link.data.icon}
           alt={link.data.text}

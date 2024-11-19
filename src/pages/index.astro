@@ -1,7 +1,5 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Badge, Button, Card } from "react-bootstrap";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import ProjectCard from "../components/project_card.astro";
@@ -14,8 +12,8 @@ const vita = await getCollection("vita");
 ---
 
 <Layout title="Nick Hermann">
-  <main class="flex flex-col align-middle">
-    <h1 class="text-center prose-h1">Nick Hermann</h1>
+  <main class="flex flex-col align-middle prose">
+    <h1 class="text-center ">Nick Hermann</h1>
     <div class="w-full flex flex-col">
       {
         links.map((link, index) => (

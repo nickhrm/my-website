@@ -10,6 +10,6 @@ export default {
 	],
 
 	daisyui: {
-		themes: ["dracula"],
+		themes: [ "dracula"],
 	  },
 }
