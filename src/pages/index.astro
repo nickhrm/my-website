@@ -12,7 +12,7 @@ const vita = await getCollection("vita");
 ---
 
 <Layout title="Nick Hermann">
-  <main class="flex flex-col w-full">
+  <main class="flex flex-col w-full prose">
     <h1 class="text-center">Nick Hermann</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -28,7 +28,7 @@ const vita = await getCollection("vita");
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="h-6"></div>
-    <h2 class="text-center prose">Vita</h2>
+    <h2 class="text-center">Vita</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       {
@@ -42,7 +42,7 @@ const vita = await getCollection("vita");
               />
             </figure>
             <div class="card-body">
-              <h2 class="card-title">{entry.data.title}</h2>
+              <h3 class="card-title">{entry.data.title}</h3>
               <p>{entry.data.endDate + " - " + entry.data.startDate}</p>
             </div>
           </div>

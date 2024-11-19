@@ -11,8 +11,8 @@ const { project } = Astro.props;
 
 <div class="card card-bordered shadow-sm">
     <div class="card-body">
-      <h2 class="card-title">{project.data.title}</h2>
-      <h3 class="card-body">{project.data.description}</h3>
+      <h3 class="card-title">{project.data.title}</h3>
+      <h4 class=" ">{project.data.description}</h4>
       <div class="card-actions">
         {project.data.tags.map((tag) => (
           <div class="badge badge-secondary">{tag}</div>
