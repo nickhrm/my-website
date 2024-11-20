@@ -19,6 +19,6 @@ export default {
 	],
 
 	daisyui: {
-		themes: ["cmyk"]
+		themes: ["cmyk","dark", "sunset"],
 	},
 }
