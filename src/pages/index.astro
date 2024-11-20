@@ -12,9 +12,9 @@ const vita = await getCollection("vita");
 ---
 
 <Layout title="Nick Hermann">
-  <main class="flex flex-col w-full prose">
-    <h1 class="text-center">Nick Hermann</h1>
-
+  <main class="flex flex-col w-full ">
+    <h1 class="text-center scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Nick Hermann</h1>
+    <div class="h-6"></div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       {
         links.map((link, index) => (
@@ -23,12 +23,12 @@ const vita = await getCollection("vita");
       }
     </div>
     <div class="h-6"></div>
-    <h2 class="text-center">Projekte</h2>
+    <h2 class="text-center mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3">Projekte</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="h-6"></div>
-    <h2 class="text-center">Vita</h2>
+    <h2 class="text-center mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors  mb-3">Vita</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
       {
