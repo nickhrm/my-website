@@ -10,10 +10,11 @@ const { vita } = Astro.props;
 
 
 
-<div class="card ard card-bordered mb-3 shadow-sm ">
+<div class="card card-bordered mb-3 ">
+  <div class="h-3"></div>
     <figure>
       <Image
-        class="h-20 object-contain"
+        class="h-20 object-contain hover:fill-red"
         src={vita.data.image}
         alt={vita.data.title}
       />
