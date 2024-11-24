@@ -1,49 +1,20 @@
----
-import { getCollection } from "astro:content";
-import LinkCard from "./link_card.astro";
-
-const linksRaw = await getCollection("links");
-const links = linksRaw.sort((a, b) => a.data.order - b.data.order);
----
 
 
-<div class="hero bg-base-200 h-[100vh]">
-    <div class="hero-content flex-col lg:flex-row">
-      <img
-        src="profilbild.jpg"
-        class="max-w-xs rounded-lg shadow-2xl" />
-      <div>
-        <h1 class="text-5xl font-bold">Nick Hermann</h1>
-        <p class="py-6">
-            Ich bin Softwareentwickler und Produktdesigner aus Hannover.
-            Meine Stärken liegen in der visonierung und Entwicklung von
-            nutzerfreundlichen Apps und Websiten
-        </p>
-        <div class="flex flex-row gap-3">
-         
-      </div>
-    </div>
-  </div>
-<!-- <div class="lg:w-9/12 mx-auto">
-  <h1
-    class="text-center scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-3"
+
+<div class="bg-base-200 h-[100vh] w-full flex justify-center align-middle">
+  <div
+    class="flex flex-col w-full max-w-5xl justify-center items-center h-full px-6"
   >
-    Nick Hermann
-  </h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-    <div class="flex flex-col">
-      {
-        links.map((link, index) => (
-          <LinkCard link={link} isPrimary={index === 0} />
-        ))
-      }
-    </div>
-    <div class="flex items-center">
-      <h2>
-        Moin Moin! Ich bin Softwareentwickler und Produktdesigner aus Hannover.
-        Meine Stärken liegen in der visonierung und Entwicklung von
-        nutzerfreundlichen Apps und Websiten
-      </h2>
-    </div>
+    <img
+      class="rounded-full h-40 w-40 lg:h-60 lg:w-60"
+      src="profilbild.jpg"
+      alt="Nick Hermann"
+    />
+    <h1 class="text-5xl lg:text-6xl font-bold text-center">Nick Hermann</h1>
+    <p class="py-6 text-center">
+      Ich bin Softwareentwickler und Produktdesigner aus Hannover. Meine Stärken
+      liegen in der visonierung und Entwicklung von nutzerfreundlichen Apps und
+      Websiten.
+    </p>
   </div>
-</div> -->
+</div>
