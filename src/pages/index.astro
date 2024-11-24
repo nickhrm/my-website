@@ -6,6 +6,7 @@ import ProjectCard from "../components/project_card.astro";
 import LinkCard from "../components/link_card.astro";
 import MyHeader from "../components/my_header.astro";
 import ContactButton from "../components/contact_button.astro";
+import BlogCarousel from "../components/blog_carousel.astro";
 
 const projects = await getCollection("projects");
 const vita = await getCollection("vita");
@@ -17,6 +18,8 @@ const vita = await getCollection("vita");
 
   <div class="mx-auto max-w-5xl pt-4 px-3">
     <div class="h-6"></div>
+      <BlogCarousel />
+
     <h2
       class="text-center mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3"
     >
@@ -26,6 +29,8 @@ const vita = await getCollection("vita");
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="h-6"></div>
+    
+
     <h2
       class="text-center mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3"
     >

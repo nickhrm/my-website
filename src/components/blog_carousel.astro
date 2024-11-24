@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+
+const blogentries = await getCollection("blog");
+---
+
+<div
+  class="carousel carousel-center bg-slate-200 rounded-box w-full space-x-4 p-4 h-96"
+>
+  {
+    blogentries.map((entry, index) => (
+      <div id={"slide" + index} class="carousel-item w-[80%] bg-secondary card">
+        <div class="card-body">
+          <h2 class="card-title ">{entry.data.title}</h2>
+          <p class="">{entry.data.abstract}</p>
+          <a href={entry.slug} class="link link-primary mb-2">
+            {entry.slug}
+          </a>
+          <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"></div>
+        </div>
+      </div>
+    ))
+  }
+</div>

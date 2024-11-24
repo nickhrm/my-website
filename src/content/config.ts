@@ -24,7 +24,7 @@ const projectsCollection = defineCollection({
 
 });
 
-const vita = defineCollection({
+const vitaCollection = defineCollection({
     schema: ({image}) => z.object({
         title: z.string(),
         startDate: z.string(),
@@ -35,8 +35,18 @@ const vita = defineCollection({
 });
 
 
+const blogCollection = defineCollection({
+    schema: ({image}) => z.object({
+        title: z.string(),
+        date: z.string(),
+        abstract: z.string(),
+    }),
+
+});
+
 export const collections = {
     links: linksCollection,
     projects: projectsCollection,
-    vita: vita,
+    vita: vitaCollection,
+    blog: blogCollection,
 };
