@@ -4,21 +4,103 @@ import { getCollection } from "astro:content";
 const blogentries = await getCollection("blog");
 ---
 
+<!-- Carousel Container mit ID für die JavaScript-Referenz -->
 <div
-  class="carousel carousel-center bg-slate-200 rounded-box w-full space-x-4 p-4 h-96"
+  id="blog-carousel"
+  class="carousel carousel-center w-full mt-16 mb-8 space-x-4 p-4 h-96 overflow-hidden scroll-smooth"
 >
   {
     blogentries.map((entry, index) => (
-      <div id={"slide" + index} class="carousel-item w-[80%] bg-secondary card">
+      <div
+        id={"slide" + index}
+        class="carousel-item w-[50%] bg-base-200 card flex-shrink-0"
+      >
         <div class="card-body">
-          <h2 class="card-title ">{entry.data.title}</h2>
-          <p class="">{entry.data.abstract}</p>
+          <h2 class="card-title">{entry.data.title}</h2>
+          <p>{entry.data.abstract}</p>
           <a href={entry.slug} class="link link-primary mb-2">
             {entry.slug}
           </a>
-          <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between"></div>
         </div>
       </div>
     ))
   }
 </div>
+
+<!-- Navigationsbuttons mit eindeutigen IDs -->
+<div class="carousel-nav w-full max-w-5xl flex flex-row justify-end mx-auto px-3">
+  <button id="carousel-prev" class="btn" aria-label="Previous">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-chevron-left"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <polyline points="15 6 9 12 15 18"></polyline>
+    </svg>
+  </button>
+  <div class="w-6"></div>
+  <button id="carousel-next" class="btn" aria-label="Next">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon icon-tabler icon-tabler-chevron-right"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+      fill="none"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <polyline points="9 6 15 12 9 18"></polyline>
+    </svg>
+  </button>
+</div>
+
+<!-- JavaScript zur Steuerung des Carousels -->
+<script type="module" defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.getElementById("blog-carousel");
+    const prevButton = document.getElementById("carousel-prev");
+    const nextButton = document.getElementById("carousel-next");
+
+    // Berechne die Breite eines einzelnen Slides inkl. Abstand
+    const carouselStyle = getComputedStyle(carousel);
+    const gap = parseInt(carouselStyle.gap) || 0;
+    const slideWidth = carousel.querySelector(".carousel-item").offsetWidth + gap;
+
+    let currentIndex = 0;
+    const totalSlides = carousel.children.length;
+
+    // Funktion zum Scrollen zum aktuellen Index
+    const scrollToIndex = (index) => {
+      carousel.scrollTo({
+        left: index * slideWidth,
+        behavior: "smooth"
+      });
+    };
+
+    // Event Listener für den Previous-Button
+    prevButton.addEventListener("click", () => {
+      currentIndex = (currentIndex === 0) ? 0 : currentIndex - 1;
+      scrollToIndex(currentIndex);
+    });
+
+    // Event Listener für den Next-Button
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex === totalSlides - 1) ? totalSlides -1 : currentIndex + 1;
+      scrollToIndex(currentIndex);
+    });
+
+    
+  });
+</script>
