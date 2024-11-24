@@ -3,10 +3,22 @@ import { getCollection } from "astro:content";
 
 const blogentries = await getCollection("blog");
 ---
+
 <!-- Carousel Container mit ID für die JavaScript-Referenz -->
+<div class="h-10"></div>
+<div class="flex justify-center">
+<div class="w-full max-w-5xl ">
+  <h2
+    class="text-left mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3"
+  >
+    Blog
+  </h2>
+</div>
+</div>
+
 <div
   id="blog-carousel"
-  class="carousel carousel-center w-full mt-16 mb-8 space-x-4 p-4 h-96 overflow-hidden scroll-smooth"
+  class="carousel carousel-center w-full mb-8 space-x-4 p-4 h-96 overflow-hidden scroll-smooth"
 >
   {
     blogentries.map((entry, index) => (
@@ -17,8 +29,8 @@ const blogentries = await getCollection("blog");
         <div class="card-body">
           <h2 class="card-title">{entry.data.title}</h2>
           <p>{entry.data.abstract}</p>
-          <a href={entry.slug} class="link link-primary mb-2">
-            {entry.slug}
+          <a href={entry.slug} class="link link-primary mb-2 w-full text-end">
+            Weiterlesen
           </a>
         </div>
       </div>
@@ -27,13 +39,10 @@ const blogentries = await getCollection("blog");
 </div>
 
 <!-- Navigationsbuttons mit eindeutigen IDs -->
-<div class="carousel-nav w-full max-w-5xl flex flex-row justify-end mx-auto px-3">
-  <button
-    id="carousel-prev"
-    class="btn"
-    aria-label="Previous"
-    disabled
-  >
+<div
+  class="carousel-nav w-full max-w-5xl flex flex-row justify-end mx-auto px-3"
+>
+  <button id="carousel-prev" class="btn" aria-label="Previous" disabled>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="icon icon-tabler icon-tabler-chevron-left"
@@ -51,11 +60,7 @@ const blogentries = await getCollection("blog");
     </svg>
   </button>
   <div class="w-6"></div>
-  <button
-    id="carousel-next"
-    class="btn"
-    aria-label="Next"
-  >
+  <button id="carousel-next" class="btn" aria-label="Next">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="icon icon-tabler icon-tabler-chevron-right"
@@ -84,7 +89,8 @@ const blogentries = await getCollection("blog");
     // Berechne die Breite eines einzelnen Slides inkl. Abstand
     const carouselStyle = getComputedStyle(carousel);
     const gap = parseInt(carouselStyle.gap) || 0;
-    const slideWidth = carousel.querySelector(".carousel-item").offsetWidth + gap;
+    const slideWidth =
+      carousel.querySelector(".carousel-item").offsetWidth + gap;
 
     let currentIndex = 0;
     const totalSlides = carousel.children.length;
@@ -93,7 +99,7 @@ const blogentries = await getCollection("blog");
     const scrollToIndex = (index) => {
       carousel.scrollTo({
         left: index * slideWidth,
-        behavior: "smooth"
+        behavior: "smooth",
       });
       updateButtonStates();
     };
