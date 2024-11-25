@@ -11,12 +11,44 @@ const blogentries = await getCollection("blog");
 <div class="flex justify-center">
   <div class="w-full max-w-5xl px-3">
     <h2 class="text-left mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3">
-      Blog
+      Neueste Beiträge
     </h2>
+    {
+      blogentries.map((entry, index) => (
+        <div class="mb-6">
+          <p class="text-neutral-content ">{entry.data.date}</p>
+          <a class="link link-hover underline-accent text-2xl">{entry.data.title}</a>
+        </div>
+        
+      ))
+    }
   </div>
 </div>
 
-<!-- Carousel Container mit Anpassungen für Scroll -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Carousel Container mit Anpassungen für Scroll
 <div
   id="blog-carousel"
   class="carousel carousel-center w-full mb-8 space-x-4 p-4 h-96 overflow-x-auto scroll-smooth snap-x snap-mandatory flex"
@@ -39,7 +71,6 @@ const blogentries = await getCollection("blog");
   }
 </div>
 
-<!-- Navigationsbuttons mit eindeutigen IDs -->
 <div class="carousel-nav w-full max-w-5xl flex flex-row justify-end mx-auto px-3">
   <button
     id="carousel-prev"
@@ -89,7 +120,6 @@ const blogentries = await getCollection("blog");
   </button>
 </div>
 
-<!-- JavaScript zur Steuerung des Carousels -->
 <script type="module" defer>
   document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.getElementById("blog-carousel");
@@ -171,4 +201,4 @@ const blogentries = await getCollection("blog");
       }, 100);
     });
   });
-</script>
+</script> -->

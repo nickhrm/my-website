@@ -5,7 +5,6 @@ import { Image } from "astro:assets";
 import ProjectCard from "../components/project_card.astro";
 import LinkCard from "../components/link_card.astro";
 import MyHeader from "../components/my_header.astro";
-import ContactButton from "../components/contact_button.astro";
 import BlogCarousel from "../components/blog_carousel.astro";
 
 const projects = await getCollection("projects");
@@ -13,7 +12,6 @@ const vita = await getCollection("vita");
 ---
 
 <Layout title="Nick Hermann">
-  <ContactButton />
   <MyHeader />
   <BlogCarousel />
 
@@ -34,7 +32,7 @@ const vita = await getCollection("vita");
     <h2
       class="mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3"
     >
-      Vita
+      Lebenslauf
     </h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
