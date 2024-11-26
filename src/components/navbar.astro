@@ -1,3 +1,21 @@
+---
+import { hr } from "date-fns/locale"
+ 
+//create navlinks
+
+const navlinks = [
+  { href: '/blog', text: 'Blog' },
+  { href: '/projekte', text: 'Projekte' },
+  { href: '/lebenslauf', text: 'Lebenslauf' },
+  { href: 'training', text: 'Training' },
+]
+---
+
+
+
+
+
+
 <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown">
@@ -18,18 +36,27 @@
         <ul
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-          <li><a href="/blog">Blog</a></li>
-        <li><a href="/projekte">Projekte</a></li>
-        <li><a href="/lebenslauf">Lebenslauf</a></li>
+          {
+            navlinks.map(({ href, text }) => (
+              <li>
+                <a href={href}>{text}</a>
+              </li>
+            ))
+          }
+         
         </ul>
       </div>
       <a class="btn btn-ghost text-xl" href="/">Nick Hermann</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/projekte">Projekte</a></li>
-        <li><a href="/lebenslauf">Lebenslauf</a></li>
+        {
+          navlinks.map(({ href, text }) => (
+            <li>
+              <a href={href}>{text}</a>
+            </li>
+          ))
+        }
       </ul>
     </div>
     <div class="navbar-end">

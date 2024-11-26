@@ -1,24 +1,24 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 
+export async function getStaticPaths() {
+  const blogentries = await getCollection("blog");
 
-export async function getStaticPaths() { 
-    const blogentries =  await getCollection("blog");
-
-    return blogentries.map((entry) => ({
-        params: {slug: entry.slug}, props: { entry },
-    }));
-  
+  return blogentries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
-
-const {entry} = Astro.props;
-const {Content} = await entry.render();
-
+const { entry } = Astro.props;
+const { Content } = await entry.render();
 ---
 
-
-
-<h1>{entry}</h1>
-<Content />
+<Layout title={entry.data.title}>
+  <div class="mx-auto max-w-5xl pt-4 px-6 prose">
+    <h1>{entry}</h1>
+    <Content  />
+  </div>
+</Layout>
