@@ -5,7 +5,8 @@ import { Image } from "astro:assets";
 import ProjectCard from "../components/project_card.astro";
 import LinkCard from "../components/link_card.astro";
 import MyHeader from "../components/my_header.astro";
-import BlogCarousel from "../components/blog_carousel.astro";
+import BlogSection from "../page_sections/blog_section.astro";
+import SectionHeader from "../components/section_header.astro";
 
 const projects = await getCollection("projects");
 const vita = await getCollection("vita");
@@ -13,39 +14,29 @@ const vita = await getCollection("vita");
 
 <Layout title="Nick Hermann">
   <MyHeader />
-  <BlogCarousel />
 
-  <div class="mx-auto max-w-5xl pt-4 px-3">
+  <div class="mx-auto max-w-5xl pt-4 px-6">
+  <BlogSection />
+
     <div class="h-6"></div>
 
-    <h2
-      class=" mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3"
-    >
-      Projekte
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <SectionHeader title="Projekte" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
     <div class="h-6"></div>
     
 
-    <h2
-      class="mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3"
-    >
-      Lebenslauf
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <SectionHeader  title="Lebenslauf" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {
         vita.map((entry) => (
-          <div class="card ard card-bordered mb-3 shadow-sm ">
-            <figure>
+          <div class="card ard card-bordered">
               <Image
-                class="h-20 object-contain"
+                class="h-20 object-contain mt-6 "
                 src={entry.data.image}
                 alt={entry.data.title}
               />
-            </figure>
             <div class="card-body">
               <h3 class="card-title">{entry.data.title}</h3>
               <p>{entry.data.endDate + " - " + entry.data.startDate}</p>

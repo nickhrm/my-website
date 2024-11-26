@@ -38,8 +38,9 @@ const vitaCollection = defineCollection({
 const blogCollection = defineCollection({
     schema: ({image}) => z.object({
         title: z.string(),
-        date: z.string(),
-        abstract: z.string(),
+        date: z
+                .string()
+                .transform(str => format(new Date(str), "MMMM d, yyyy")),
     }),
 
 });

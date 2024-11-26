@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import SectionHeader from "../components/section_header.astro";
 
 const blogentries = await getCollection("blog");
 ---
@@ -9,15 +10,13 @@ const blogentries = await getCollection("blog");
 
 <!-- Titel -->
 <div class="flex justify-center">
-  <div class="w-full max-w-5xl px-3">
-    <h2 class="text-left mt-10 scroll-m-20 text-3xl font-semibold tracking-tight transition-colors mb-3">
-      Neueste Beiträge
-    </h2>
+  <div class="w-full max-w-5xl ">
+    <SectionHeader  title="Neueste Beiträge" />
     {
       blogentries.map((entry, index) => (
         <div class="mb-6">
           <p class="text-neutral-content ">{entry.data.date}</p>
-          <a class="link link-hover underline-accent text-2xl">{entry.data.title}</a>
+          <a class="link link-hover underline-accent text-2xl" href={`/blog/${entry.slug}`}>{entry.data.title}</a>
         </div>
         
       ))
