@@ -5,199 +5,32 @@ import SectionHeader from "../components/section_header.astro";
 const blogentries = await getCollection("blog");
 ---
 
-<!-- Spacer -->
-<div class="h-10"></div>
 
 <!-- Titel -->
-<div class="flex justify-center">
-  <div class="w-full max-w-5xl ">
-    <SectionHeader  title="Neueste Beiträge" />
+<div class="flex justify-center m-6">
+  <div class="w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
     {
       blogentries.map((entry, index) => (
-        <div class="mb-6">
-          <p class="text-neutral-content ">{entry.data.date}</p>
-          <a class="link link-hover underline-accent text-2xl" href={`/blog/${entry.slug}`}>{entry.data.title}</a>
+        <div class="card bg-base-100 shadow-lg blog-card">
+
+          <div class="card-body justify-start">
+            <p class="">{entry.data.date.trim()}</p>
+
+            <h2 class="card-title">{entry.data.title}</h2>
+            <div class="gap-3 flex-wrap flex my-2" >
+              {entry.data.tags.map((tag) => (
+              <span class="badge badge-primary">{tag}</span>
+            ))}
+            </div>
+            <div class="card-actions justify-end">
+              <a href={`/blog/${entry.slug}`} class="btn btn-ghost">
+                
+Read More
+              </a>
+            </div>
+          </div>
         </div>
-        
       ))
     }
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Carousel Container mit Anpassungen für Scroll
-<div
-  id="blog-carousel"
-  class="carousel carousel-center w-full mb-8 space-x-4 p-4 h-96 overflow-x-auto scroll-smooth snap-x snap-mandatory flex"
->
-  {
-    blogentries.map((entry, index) => (
-      <div
-        id={"slide" + index}
-        class="carousel-item w-[65vw] bg-base-200 card flex-shrink-0 snap-center"
-      >
-        <div class="card-body">
-          <h2 class="card-title">{entry.data.title}</h2>
-          <p>{entry.data.abstract}</p>
-          <a href={entry.slug} class="link link-primary mb-2 w-full text-end">
-            Weiterlesen
-          </a>
-        </div>
-      </div>
-    ))
-  }
-</div>
-
-<div class="carousel-nav w-full max-w-5xl flex flex-row justify-end mx-auto px-3">
-  <button
-    id="carousel-prev"
-    class="btn focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-    aria-label="Previous"
-    aria-disabled="true"
-    disabled
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-chevron-left"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <polyline points="15 6 9 12 15 18"></polyline>
-    </svg>
-  </button>
-  <div class="w-6"></div>
-  <button
-    id="carousel-next"
-    class="btn focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-    aria-label="Next"
-    aria-disabled="false"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      class="icon icon-tabler icon-tabler-chevron-right"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      stroke-width="2"
-      stroke="currentColor"
-      fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-      <polyline points="9 6 15 12 9 18"></polyline>
-    </svg>
-  </button>
-</div>
-
-<script type="module" defer>
-  document.addEventListener("DOMContentLoaded", () => {
-    const carousel = document.getElementById("blog-carousel");
-    const prevButton = document.getElementById("carousel-prev");
-    const nextButton = document.getElementById("carousel-next");
-
-    // Berechne die Breite eines einzelnen Slides inkl. Abstand
-    const carouselStyle = getComputedStyle(carousel);
-    const gap = parseInt(carouselStyle.gap) || 0;
-    const slideWidth =
-      carousel.querySelector(".carousel-item").offsetWidth + gap;
-
-    let currentIndex = 0;
-    const totalSlides = carousel.children.length;
-
-    // Funktion zum Scrollen zum aktuellen Index
-    const scrollToIndex = (index) => {
-      carousel.scrollTo({
-        left: index * slideWidth,
-        behavior: "smooth",
-      });
-      updateButtonStates();
-    };
-
-    // Funktion zum Aktualisieren der Button-States
-    const updateButtonStates = () => {
-      // Deaktiviere den Previous-Button, wenn am ersten Slide
-      if (currentIndex === 0) {
-        prevButton.disabled = true;
-        prevButton.classList.add("opacity-50", "cursor-not-allowed");
-        prevButton.setAttribute("aria-disabled", "true");
-      } else {
-        prevButton.disabled = false;
-        prevButton.classList.remove("opacity-50", "cursor-not-allowed");
-        prevButton.setAttribute("aria-disabled", "false");
-      }
-
-      // Deaktiviere den Next-Button, wenn am letzten Slide
-      if (currentIndex === totalSlides - 1) {
-        nextButton.disabled = true;
-        nextButton.classList.add("opacity-50", "cursor-not-allowed");
-        nextButton.setAttribute("aria-disabled", "true");
-      } else {
-        nextButton.disabled = false;
-        nextButton.classList.remove("opacity-50", "cursor-not-allowed");
-        nextButton.setAttribute("aria-disabled", "false");
-      }
-    };
-
-    // Initialer Zustand der Buttons
-    updateButtonStates();
-
-    // Event Listener für den Previous-Button
-    prevButton.addEventListener("click", () => {
-      if (currentIndex > 0) {
-        currentIndex -= 1;
-        scrollToIndex(currentIndex);
-      }
-    });
-
-    // Event Listener für den Next-Button
-    nextButton.addEventListener("click", () => {
-      if (currentIndex < totalSlides - 1) {
-        currentIndex += 1;
-        scrollToIndex(currentIndex);
-      }
-    });
-
-    // Optional: Aktualisiere den aktuellen Index bei manuellem Scrollen
-    let isScrolling;
-    carousel.addEventListener("scroll", () => {
-      window.clearTimeout(isScrolling);
-      isScrolling = setTimeout(() => {
-        const newIndex = Math.round(carousel.scrollLeft / slideWidth);
-        if (newIndex !== currentIndex) {
-          currentIndex = newIndex;
-          updateButtonStates();
-        }
-      }, 100);
-    });
-  });
-</script> -->

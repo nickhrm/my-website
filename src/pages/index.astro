@@ -2,48 +2,134 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import ProjectCard from "../components/project_card.astro";
 import LinkCard from "../components/link_card.astro";
 import MyHeader from "../components/my_header.astro";
 import BlogSection from "../page_sections/blog_section.astro";
 import SectionHeader from "../components/section_header.astro";
 
-const projects = await getCollection("projects");
-const vita = await getCollection("vita");
+const blogentries = await getCollection("blog");
+
+//get all tags
+
+let tags: string[] = [];
+blogentries.forEach((entry) => {
+  entry.data.tags.forEach((tag) => {
+    if (!tags.includes(tag)) {
+      tags.push(tag);
+    }
+  });
+});
 ---
 
 <Layout title="Nick Hermann">
   <MyHeader />
 
-  <div class="mx-auto max-w-5xl pt-4 px-6">
-  <BlogSection />
-
-    <div class="h-6"></div>
-
-    <SectionHeader title="Projekte" />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {projects.map((project) => <ProjectCard project={project} />)}
+  <div class="mx-auto max-w-5xl pt-4">
+    <div
+      class="justify-stretch sticky top-6 z-10 m-6  md:m-12"
+    >
+      <label
+        class="input input-bordered flex items-center gap-2 w-full pr-2 shadow"
+      >
+        <input type="text" class="grow" placeholder="Search Everywhere" />
+        <kbd class="kbd hidden md:inline-flex">alt</kbd>
+        <kbd class="kbd hidden md:inline-flex">K</kbd>
+      </label>
     </div>
-    <div class="h-6"></div>
-    
-
-    <SectionHeader  title="Lebenslauf" />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="flex flex-wrap gap-4 mx-6 my-11">
       {
-        vita.map((entry) => (
-          <div class="card ard card-bordered">
-              <Image
-                class="h-20 object-contain mt-6 "
-                src={entry.data.image}
-                alt={entry.data.title}
-              />
-            <div class="card-body">
-              <h3 class="card-title">{entry.data.title}</h3>
-              <p>{entry.data.endDate + " - " + entry.data.startDate}</p>
-            </div>
-          </div>
+        tags.map((tag) => (
+          <button
+            id={tag.trim()}
+            class="badge badge-ghost hover:badge-primary badge-lg selectable-bade"
+          >
+            {tag}
+          </button>
         ))
       }
+            <button id="reset-button" class="badge badge-outline badge-lg">Auswahl zurücksetzen</button>
+
     </div>
+
+    <BlogSection />
+
   </div>
 </Layout>
+
+<script>
+  let selectedTags: string[] = [];
+
+  window.addEventListener("click", (e) => {
+    if (e.target.classList.contains("selectable-bade")) {
+      let tag = e.target.textContent.trim();
+      console.log(tag);
+      console.log(selectedTags);
+      if (selectedTags.includes(tag)) {
+        selectedTags = selectedTags.filter((t) => t !== tag);
+        document.getElementById(tag)!.classList.add("badge-ghost");
+        document.getElementById(tag)!.classList.remove("badge-primary");
+      } else {
+        selectedTags.push(tag);
+        document.getElementById(tag)!.classList.remove("badge-ghost");
+        document.getElementById(tag)!.classList.add("badge-primary");
+      }
+      filterEntries();
+    }
+  });
+
+  function filterEntries() {
+    let entries = document.querySelectorAll(".card");
+    entries.forEach((entry) => {
+      let tags = entry.querySelectorAll(".badge");
+      let show = false;
+
+      if (selectedTags.length === 0) {
+        entry.classList.remove("hidden");
+        return;
+      }
+
+      tags.forEach((tag) => {
+        if (selectedTags.includes(tag.textContent?.trim()!)) {
+          show = true;
+        }
+      });
+      if (show) {
+        entry.classList.remove("hidden");
+      } else {
+        entry.classList.add("hidden");
+      }
+    });
+  }
+
+  window.addEventListener("click", (e) => {
+    if (e.target.id === "reset-button") {
+      resetFilter();
+    }
+  });
+
+
+  function resetFilter() {
+    selectedTags = [];
+    let entries = document.querySelectorAll(".blog-card");
+    entries.forEach((entry) => {
+      entry.classList.remove("hidden");
+    });
+    let tags = document.querySelectorAll(".badge");
+    tags.forEach((tag) => {
+      tag.classList.remove("badge-primary");
+      tag.classList.add("badge-ghost");
+    });
+  }
+
+  window.addEventListener("keydown", (e) => {
+    console.log("Test");
+    if (e.key === "k" && e.altKey) {
+      e.preventDefault();
+      let input = document.querySelector("input");
+      if (input) {
+        input.value = "";
+        input.focus();
+      }
+    }
+  });
+</script>

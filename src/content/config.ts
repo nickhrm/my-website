@@ -11,33 +11,11 @@ const linksCollection = defineCollection({
     }),
 });
 
-const projectsCollection = defineCollection({
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-        tags: z.array(z.string()),
-        links: z.array(z.object({
-            text: z.string(),
-            url: z.string(),
-          })),
-    }),
-
-});
-
-const vitaCollection = defineCollection({
-    schema: ({image}) => z.object({
-        title: z.string(),
-        startDate: z.string(),
-        endDate: z.string(),
-        image: image(),
-    }),
-
-});
-
 
 const blogCollection = defineCollection({
     schema: ({image}) => z.object({
         title: z.string(),
+        tags: z.array(z.string()),
         date: z
                 .string()
                 .transform(str => format(new Date(str), "MMMM d, yyyy")),
@@ -47,7 +25,5 @@ const blogCollection = defineCollection({
 
 export const collections = {
     links: linksCollection,
-    projects: projectsCollection,
-    vita: vitaCollection,
     blog: blogCollection,
 };

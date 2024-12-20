@@ -207,38 +207,6 @@ declare module 'astro:content' {
   data: InferEntrySchema<"links">
 } & { render(): Render[".md"] };
 };
-"projects": {
-"stadtmarketing.md": {
-	id: "stadtmarketing.md";
-  slug: "stadtmarketing";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".md"] };
-"wahlers.md": {
-	id: "wahlers.md";
-  slug: "wahlers";
-  body: string;
-  collection: "projects";
-  data: InferEntrySchema<"projects">
-} & { render(): Render[".md"] };
-};
-"vita": {
-"pixel.md": {
-	id: "pixel.md";
-  slug: "pixel";
-  body: string;
-  collection: "vita";
-  data: InferEntrySchema<"vita">
-} & { render(): Render[".md"] };
-"uni-hannover.md": {
-	id: "uni-hannover.md";
-  slug: "uni-hannover";
-  body: string;
-  collection: "vita";
-  data: InferEntrySchema<"vita">
-} & { render(): Render[".md"] };
-};
 
 	};
 

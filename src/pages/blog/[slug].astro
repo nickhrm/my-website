@@ -14,11 +14,21 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+const cappedTitle = entry.data.title.length > 25 ? entry.data.title.substring(0, 25).concat("...") : entry.data.title; 
 ---
 
 <Layout title={entry.data.title}>
+  <div class="h-4"></div>
+  <div class="breadcrumbs text-sm px-6">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>{cappedTitle}</li>
+    </ul>
+  </div>
   <div class="mx-auto max-w-5xl pt-4 px-6 prose">
-    <h1>{entry}</h1>
+    
+    <h1>{entry.data.title}</h1>
     <Content  />
   </div>
 </Layout>

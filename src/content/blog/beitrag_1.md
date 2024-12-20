@@ -1,6 +1,7 @@
 ---
 title: "What I learned developing a ERP system in Flutter" 
 date: "2024-11-24"
+tags: ["Flutter", "Dart", "ERP", "Mobile Development"]
 ---
 
 
