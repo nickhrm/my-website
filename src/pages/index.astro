@@ -60,8 +60,9 @@ blogentries.forEach((entry) => {
   let selectedTags: string[] = [];
 
   window.addEventListener("click", (e) => {
-    if (e.target.classList.contains("selectable-bade")) {
-      let tag = e.target.textContent.trim();
+    let target = e.target as HTMLElement;
+    if (target.classList.contains("selectable-bade")) {
+      let tag = target.textContent!.trim();
       console.log(tag);
       console.log(selectedTags);
       if (selectedTags.includes(tag)) {
@@ -102,7 +103,8 @@ blogentries.forEach((entry) => {
   }
 
   window.addEventListener("click", (e) => {
-    if (e.target.id === "reset-button") {
+    let target = e.target as HTMLElement;
+    if (target.id === "reset-button") {
       resetFilter();
     }
   });
