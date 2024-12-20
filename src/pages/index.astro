@@ -2,10 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import LinkCard from "../components/link_card.astro";
 import MyHeader from "../components/my_header.astro";
 import BlogSection from "../page_sections/blog_section.astro";
-import SectionHeader from "../components/section_header.astro";
 
 const blogentries = await getCollection("blog");
 
