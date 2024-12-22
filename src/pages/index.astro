@@ -116,8 +116,11 @@ blogentries.forEach((entry) => {
     });
     let tags = document.querySelectorAll(".badge");
     tags.forEach((tag) => {
-      tag.classList.remove("badge-primary");
-      tag.classList.add("badge-ghost");
+      if (tag.classList.contains("selectable-bade")) {
+        tag.classList.remove("badge-primary");
+        tag.classList.add("badge-ghost");
+      }
+      
     });
   }
 

@@ -21,11 +21,12 @@ const blogentries = await getCollection("blog");
               <span class="badge badge-primary">{tag}</span>
             ))}
             </div>
-            <div class="card-actions justify-end">
+            {entry.body.length != 0 &&<div class="card-actions justify-end">
               <a href={`/blog/${entry.slug}`} class="btn btn-ghost">
                 Mehr lesen
               </a>
-            </div>
+            </div>}
+            
           </div>
         </div>
       ))
