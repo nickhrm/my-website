@@ -4,7 +4,7 @@ tags:
     - Nuxt
     - Flutter
     - Test
-date: "2025-02-25"
+date: "2025-02-23"
 readingTime: 20
 ---
 

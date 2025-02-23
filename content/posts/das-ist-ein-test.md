@@ -1,10 +1,9 @@
 ---
-title: "Test"
+title: "Annyoed by Theme.of(context).textTheme.bodyText1?"
 tags: 
-    - test
-    - test2
-    - test3
-date: "2025-02-25"
+    - Flutter
+    - Tipp
+date: "2025-09-08"
 readingTime: 2
 ---
 

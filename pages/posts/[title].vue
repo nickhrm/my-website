@@ -20,17 +20,17 @@ if (!data.value)
 
 useSeoMeta({
   title: data.value?.title,
-  description: data.value?.description
-})
+  description: data.value?.description,
+}) 
 </script>
 
 <template>
-  <UContainer class="py-10 flex flex-col items-center">
+  <UContainer class="py-10 flex flex-col max-w-2xl">
 
-    <div v-if="data">
-      <h1 class="text-4xl font-bold mb-6">{{ data.title }}</h1>
+    <div v-if="data" class="md:mx-auto">
+      <h1 class="text-lg mb-6">{{ data.title }}</h1>
       <div class="flex flex-row gap-4 mb-4">
-        <p>{{ data.date }}</p>
+        <p>{{ new Date(data.date).toLocaleDateString() }}</p>
         <p>|</p>
         <p>{{ data.readingTime }}min read</p>
       </div>
