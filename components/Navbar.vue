@@ -1,8 +1,11 @@
 <template>
-  <UContainer class=" max-w-2xl py-6 border-b-2">
-    <div class="flex flex-row">
-      <NuxtLink to="/">Nick Hermann</NuxtLink>
+  <UContainer class=" py-6 ">
+    <div class="flex flex-row justify-between items-center">
+      <UButton variant="link" color="black" to="/">Nick Hermann</UButton>
+      <ToggleColorModeButton></ToggleColorModeButton>
     </div>
+    <div class="h-4"></div>
+    <UDivider />
   </UContainer>
 
 </template>

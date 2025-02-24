@@ -6,7 +6,7 @@ import { NuxtPage } from '#components';
 <template>
 
 <Navbar/>
-  <div class="min-h-screen w-screen overflow-x-scroll">
+  <div class="min-h-[80vh] w-screen overflow-x-scroll">
     <NuxtPage></NuxtPage>
   </div>
 

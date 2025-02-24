@@ -3,50 +3,70 @@ import { NuxtLink } from '#components';
 
 const { data: posts } = await useAsyncData('posts', () => queryCollection('posts').all())
 
+const { isDark } = useMyDarkMode()
 
 
+
+function handleMail() {
+  window.open('mailto:kontakt@nickhrm.de')
+}
+
+function handleGitHub() {
+  window.open('https://github.com/nickhrm')
+}
 
 </script>
 
-
-
-
 <template>
-  <UContainer class="py-10 max-w-2xl">
-    <div class="flex flex-col-reverse md:flex-row justify-between items-center">
+  <UContainer class="py-10">
+    <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-10">
       <div>
-        <h1 class="text-3xl font-bold mb-2">Nick Hermann</h1>
-        <p>I'm a software developer based in Hannover. I study computer science at Leibniz University and work as a
-          developer since 3 Years. My Expertiese is mainly in app and web development.</p>
+        <h1 class="text-3xl font-bold mb-6">Nick Hermann</h1>
+        <p class="text-pretty">I'm a software developer based in Hannover, studying Computer Science at Leibniz
+          University. With three years of experience in app and web development, I specialize in building modern,
+          high-performance applications.
 
+          Beyond coding, I enjoy staying active and doing sports.</p>
+        <div class="flex flex-row gap-6 mt-6">
+          <UButton @click="handleMail" size="lg" leading-icon="material-symbols:mail-outline-rounded">Mail</UButton>
+          <UButton @click="handleGitHub" :color="isDark ? 'primary' : 'black'" :variant="isDark ? 'solid' : 'ghost'"
+            leading-icon="logos:github-icon">GitHub</UButton>
+
+        </div>
       </div>
-      <div class="w-4 h-4"></div>
       <img src="~/assets/profilbild.jpg" alt="Profilbild" class="rounded-full w-28 h-28 my-5" />
     </div>
 
-    <h2 class="text-lg font-bold mt-12 mb-3">Latest Posts</h2>
 
+    <div class="h-10"></div>
 
-    <NuxtLink :to="`${post.path}`" v-for="post in posts" :key="post.id">
-      <div class="hover:bg-gray-200 rounded-md mb-6 p-3 transition-colors duration-150 hover:cursor-pointer flex flex-col justify-center">
-        <div>
-          <p class="mb-3">{{ post.title }}</p>
-          <div class="flex flex-row text-gray-500 gap-4">
-            <p>{{ new Date(post.date).toLocaleDateString() }}</p>
-            <p>|</p>
-            <p class="mb-4 ">{{ post.readingTime }}min read</p>
-          </div>
+    <h2 class="text-2xl mt-12 mb-3">Latest Posts</h2>
+    <UDivider />
 
-          <div class="flex flex-wrap gap-4">
-            <div v-for="tag in post.tags">
-              <UBadge>{{ tag }}</UBadge>
+    <div v-for="post in posts" :key="post.id" class="group">
+      <NuxtLink :to="`${post.path}`">
+        <div
+          class="hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-md p-6 transition-colors duration-150 hover:cursor-pointer flex flex-col justify-center">
+          <div>
+            <p class="mb-3 text-pretty">{{ post.title }}</p>
+            <div class="flex flex-row justify-start items-center text-neutral-600 mb-3">
+              <UIcon name="heroicons-calendar" class="mr-1" />
+              <p>{{ new Date(post.date).toLocaleDateString() }}</p>
+              <p class="mx-3"></p>
+              <UIcon name="heroicons-clock" class="mr-1" />
+              <p>{{ post.readingTime }}min read</p>
+            </div>
+            <div class="flex flex-wrap gap-4">
+              <div v-for="tag in post.tags">
+                <UBadge variant="soft">#{{ tag }}</UBadge>
+              </div>
             </div>
           </div>
         </div>
+      </NuxtLink>
+      <UDivider class="group-hover:invisible" />
+    </div>
 
 
-
-      </div>
-    </NuxtLink>
   </UContainer>
 </template>

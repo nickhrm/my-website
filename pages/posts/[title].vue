@@ -25,24 +25,27 @@ useSeoMeta({
 </script>
 
 <template>
-  <UContainer class="py-10 flex flex-col max-w-2xl">
+  <UContainer class="py-10 flex flex-col">
 
-    <div v-if="data" class="md:mx-auto">
-      <h1 class="text-lg mb-6">{{ data.title }}</h1>
-      <div class="flex flex-row gap-4 mb-4">
+    <div v-if="data" class="">
+      <h1 class="text-2xl mb-6 whitespace-normal break-words">{{ data.title }}</h1>
+      <div class="flex flex-row justify-start items-center text-neutral-600  mb-3">
+        <UIcon name="heroicons-calendar" class="mr-1" />
         <p>{{ new Date(data.date).toLocaleDateString() }}</p>
-        <p>|</p>
-        <p>{{ data.readingTime }}min read</p>
+
+        <p class="mx-3"></p>
+        <UIcon name="heroicons-clock" class="mr-1" />
+        <p class="">{{ data.readingTime }}min read</p>
       </div>
       <div class="flex flex-wrap gap-4 mb-8">
         <div v-for="tag in data.tags">
-          <UBadge>#{{ tag }}</UBadge>
+          <UBadge variant="soft">#{{ tag }}</UBadge>
         </div>
 
       </div>
 
 
-      <ContentRenderer :value="data" class="prose" />
+      <ContentRenderer :value="data" class="prose dark:prose-invert" />
 
     </div>
 
@@ -55,3 +58,32 @@ useSeoMeta({
   </UContainer>
 
 </template>
+
+
+
+<style scoped>
+/* Beispielhafte Styles für Inhalte, die im ContentRenderer generiert werden */
+.custom-content h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+}
+
+.custom-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Weitere Anpassungen für Listen, Blockquotes etc. */
+.custom-content ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}
+
+.custom-content blockquote {
+  font-style: italic;
+  border-left: 4px solid #ddd;
+  padding-left: 1rem;
+  color: #666;
+}
+</style>

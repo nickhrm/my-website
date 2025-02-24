@@ -1,6 +1,13 @@
 export default defineAppConfig({
     ui: {
-      primary: 'green',
-      gray: 'stone',
+      primary: 'blue',
+
+      gray: 'neutral',
+
+      container: {
+        constrained: 'max-w-3xl',
+      },
+
+      
     }
   })
