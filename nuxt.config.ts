@@ -21,6 +21,6 @@ export default defineNuxtConfig({
   site: {
     url: 'https://nickhrm.de',
     name: 'Nick Hermann',
-
+    enabled: true,
   },
 })
