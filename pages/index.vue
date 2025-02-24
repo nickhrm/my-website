@@ -34,7 +34,7 @@ function handleGitHub() {
 
         </div>
       </div>
-      <img src="~/assets/profilbild.jpg" alt="Profilbild" class="rounded-full w-28 h-28 my-5" />
+      <NuxtImg src="/profilbild.jpg" alt="Profilbild" class="rounded-full w-28 h-28 my-5" />
     </div>
 
 
