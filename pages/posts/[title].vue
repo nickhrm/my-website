@@ -29,7 +29,7 @@ useSeoMeta({
 
     <div v-if="data" class="">
       <h1 class="text-2xl mb-6 whitespace-normal break-words">{{ data.title }}</h1>
-      <div class="flex flex-row justify-start items-center text-neutral-600  mb-3">
+      <div class="flex flex-row justify-start items-center text-neutral-600 dark:text-neutral-400  mb-3">
         <UIcon name="heroicons-calendar" class="mr-1" />
         <p>{{ new Date(data.date).toLocaleDateString() }}</p>
 

@@ -22,7 +22,7 @@ function handleGitHub() {
     <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-10">
       <div>
         <h1 class="text-3xl font-bold mb-6">Nick Hermann</h1>
-        <p class="text-pretty">I'm a software developer based in Hannover, studying Computer Science at Leibniz
+        <p class="text-pretty">I'm a <b>software developer</b> based in Hannover, studying Computer Science at Leibniz
           University. With three years of experience in app and web development, I specialize in building modern,
           high-performance applications.
 
@@ -49,7 +49,7 @@ function handleGitHub() {
           class="hover:bg-neutral-200 dark:hover:bg-neutral-800 rounded-md p-6 transition-colors duration-150 hover:cursor-pointer flex flex-col justify-center">
           <div>
             <p class="mb-3 text-pretty">{{ post.title }}</p>
-            <div class="flex flex-row justify-start items-center text-neutral-600 mb-3">
+            <div class="flex flex-row justify-start items-center text-neutral-600 dark:text-neutral-400  mb-3">
               <UIcon name="heroicons-calendar" class="mr-1" />
               <p>{{ new Date(post.date).toLocaleDateString() }}</p>
               <p class="mx-3"></p>
