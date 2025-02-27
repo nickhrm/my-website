@@ -68,5 +68,12 @@ function handleGitHub() {
     </div>
 
 
+    <div>
+      <NuxtLink to="/posts">
+        <UButton variant="solid" color="primary" size="lg">All Posts</UButton>
+      </NuxtLink>
+    </div>
+
+
   </UContainer>
 </template>
