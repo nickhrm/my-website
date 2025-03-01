@@ -1,46 +1,39 @@
 ---
-title: "Strongman Training"
+title: "MY Powerlifting Routine focues on Squat and Deadlift"
 tags: 
     - Fitness
-    - Strongman
-date: "2025-09-08"
+date: "2025-01-03"
 readingTime: 12
 ---
 
 
-push, pull, carry, overhead press, squat, and hinge.
+
+Based on GZCL Method
+
+Ziele 
+- Deadlift 200kg und Squat 180kg
+- Maintain Endurance and improve Strength
+
+# D1
+T1 Deadlift
+T2 Dip
+T3 Lat-Pulldown
+T3 Single Leg 
+
+Rest
+# D2
+T1 Dip
+T2 Squat
+T3 Rowing
+T3 Back Extensions
+
+Rest
+# D3
+T1 Squat
+T2 Deadlift
+T3 Dumbell Face Pulls
+T3 Bauch
+
+2xRest
 
 
-Squat
-
-Squat
-
-Deadlift
-
-Ausprobieren
-power clean
-Arm over arm
-Farmers Walk
-Sledge Push
-
-
-Day 1: Hinge
-- Deadlift
-- Snatch Grip Deadlift
-- Bend over Row
-- Core
-
-
-Day 2: Upper
-- Pull Up
-- Reverse Butterfly
-- Bench Press
-- Dip
-
-
-
-
-Day 3: Squat
-- Squat
-- Leg Press mit Füßen wie bei Deadlift
-- Overhead Press
