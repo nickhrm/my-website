@@ -1,5 +1,5 @@
 ---
-title: "MY Powerlifting Routine focues on Squat and Deadlift"
+title: "My Powerlifting Routine focues on Squat and Deadlift"
 tags: 
     - Fitness
 date: "2025-01-03"
@@ -29,7 +29,7 @@ T3 Back Extensions
 
 Rest
 # D3
-T1 Squat
+T1 Squat 
 T2 Deadlift
 T3 Dumbell Face Pulls
 T3 Bauch
