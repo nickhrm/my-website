@@ -4,7 +4,12 @@ tags:
     - Project
     - Web-App
 
-
+coverImage: "hochschulsport_1.png"
+images:
+    - "hochschulsport_1.png"
+    - "hochschulsport_2.png"
+    - "hochschulsport_3.png"
+    - "hochschulsport_4.png"
 icons:
     - logos:react-icon
     - logos:supabase-icon

@@ -1,7 +1,8 @@
 <template>
-  <UContainer class=" py-6 ">
-    <div class="flex flex-row justify-between items-center">
+  <UContainer class=" py-6 max-w-7xl" >
+    <div class="flex flex-row justify-start items-center">
       <UButton variant="link" color="black" to="/">Nick Hermann</UButton>
+      <div class="flex-grow"></div>
       <ToggleColorModeButton></ToggleColorModeButton>
     </div>
     <div class="h-4"></div>
@@ -11,6 +12,8 @@
 </template>
 
 <script lang="ts" setup>
+import BicycleLogo from './BicycleLogo.vue';
+
 
 </script>
 

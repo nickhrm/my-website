@@ -14,6 +14,8 @@ function handleMail() {
 function handleGitHub() {
   window.open("https://github.com/nickhrm");
 }
+
+
 </script>
 
 <template>
@@ -22,7 +24,7 @@ function handleGitHub() {
       class="flex flex-col-reverse md:flex-row justify-between items-center gap-10"
     >
       <div>
-        <h1 class="text-3xl font-bold mb-6">Nick Hermann</h1>
+        <h1 class="text-4xl font-bold mb-6">Nick Hermann</h1>
         <p class="text-pretty">
           Ich bin Full-Stack-Softwareentwickler aus Hannover und bin begeistert
           davon, mit Code echte Probleme zu lösen. Von der Konzeption bis zur

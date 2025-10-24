@@ -36,17 +36,18 @@ useSeoMeta({
 
   <div class="w-full flex justify-center mb-3 px-4" v-if="data && data.images && data.images.length > 0">
     <UCarousel
-      v-slot="{ image }"
+      v-slot="{ item }"
       fade
       arrows
       dots
       :items="data.images"
-      class="max-w-7xl mx-auto mb-4 align-center"
+      class="max-w-7xl mx-auto mb-4 align-center overflow-visible"
     >
-      <NuxtLink :to="`/${data.coverImage}`" class="block mx-auto">
+    {{ console.log("test: ", data.images) }}
+      <NuxtLink :to="`/${item}`" class="block mx-auto">
         <NuxtImg
-          :src="`/${data.coverImage}`"
-          class="max-h-96 rounded-lg mr-3"
+          :src="`/${item}`"
+          class="max-h-4xl rounded-lg mr-3 shadow-xl"
         ></NuxtImg>
       </NuxtLink>
     </UCarousel>
@@ -66,6 +67,7 @@ useSeoMeta({
 
     <ContentRenderer :value="data" class="prose dark:prose-invert" />
   </UContainer>
+  <div class="h-28"></div>
 </template>
 
 <style scoped>
