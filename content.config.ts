@@ -5,8 +5,9 @@ import { asSitemapCollection } from '@nuxtjs/sitemap/content'
 const postsSchema = z.object({
   title: z.string().nonempty(),
   tags: z.array(z.string()),
-  date: z.date(),
-  readingTime: z.number().gt(0),
+  icons: z.array(z.string()),
+  coverImage: z.string().optional(),
+  images: z.array(z.string()).optional(),
 })
 
 
