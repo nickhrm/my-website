@@ -1,8 +1,10 @@
 ---
 title: "I build a platform for uploading and sharing fitness plans"
 tags: 
-    - Fitness
+    - FLutter
     - Project
+    - Firebase
+    - TypeScript
 date: "2025-06-03"
 readingTime: 10
 ---

@@ -22,11 +22,7 @@ function handleGitHub() {
     <div class="flex flex-col-reverse md:flex-row justify-between items-center gap-10">
       <div>
         <h1 class="text-3xl font-bold mb-6">Nick Hermann</h1>
-        <p class="text-pretty">I'm a <b>software developer</b> based in Hannover, studying Computer Science at Leibniz
-          University. With three years of experience in app and web development, I specialize in building modern,
-          high-performance applications.
-
-          Beyond coding, I enjoy staying active and doing sports.</p>
+        <p class="text-pretty">Softwareentwickler aus Hannover.</p>
         <div class="flex flex-row gap-6 mt-6">
           <UButton @click="handleMail" size="lg" leading-icon="material-symbols:mail-outline-rounded">Mail</UButton>
           <UButton @click="handleGitHub" :color="isDark ? 'primary' : 'black'" :variant="isDark ? 'solid' : 'ghost'"
