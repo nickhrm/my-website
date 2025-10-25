@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-import BicycleLogo from './BicycleLogo.vue';
 
 
 </script>

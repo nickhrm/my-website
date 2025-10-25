@@ -14,6 +14,7 @@ icons:
     - logos:react-icon
     - logos:supabase-icon
     - logos:typescript-icon
+    - logos:postgresql
     - logos:tailwindcss-icon
 
 ---

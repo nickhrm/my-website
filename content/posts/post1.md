@@ -7,7 +7,6 @@ icons:
     - logos:flutter
     - logos:typescript-icon
     - logos:firebase-icon
-    - logos:microsoft-azure
     - logos:express
 
 date: "2025-01-03"
