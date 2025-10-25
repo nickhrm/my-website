@@ -21,4 +21,6 @@ icons:
 
 
 Programmieren der Website (React, TypeScript), sowie Anbinden eines Content-Management-Systems,
-dass es dem Kunden erm¨oglicht die Website mit einem Baukasten selber zu gestalten. Nutzen von Docker
+dass es dem Kunden ermöglicht die Website mit einem Baukasten selber zu gestalten. Nutzen von Docker
+
+[Live Website](https://www.stadtmarketing-lehrte.de)

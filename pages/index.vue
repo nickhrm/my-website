@@ -15,11 +15,24 @@ function handleGitHub() {
   window.open("https://github.com/nickhrm");
 }
 
-
+const items = ref([
+  {
+    label: "Startseite",
+    icon: "i-lucide-book-open",
+    to: "/",
+  },
+  // Füge den Titel der aktuellen Seite als letztes Breadcrumb-Element hinzu
+  {
+    label: "sds",
+    icon: "i-lucide-file-text",
+  },
+]);
 </script>
 
 <template>
   <UContainer class="py-10">
+    <UBreadcrumb :items="items" />
+
     <div
       class="flex flex-col-reverse md:flex-row justify-between items-center gap-10"
     >
@@ -58,7 +71,7 @@ function handleGitHub() {
     <h2 class="text-2xl mt-12 mb-3">Projekte, Artikel und Co...</h2>
     <UDivider />
 
-    <div v-for="post in posts" :key="post.id" class="group">
+    <div v-for="post in posts" :key="post.id" class="group ">
       <!-- <FollowMouse class="hidden group-hover:block duration-150 transition-all"></FollowMouse> -->
 
       <NuxtLink :to="`${post.path}`">

@@ -25,38 +25,55 @@ useSeoMeta({
   title: data.value?.title,
   description: data.value?.description,
 });
+
+const items = ref([
+  {
+    label: "Startseite",
+    icon: "i-lucide-book-open",
+    to: "/",
+  },
+
+]);
 </script>
 
 <template>
-  <UContainer class=" flex flex-col" v-if="data">
-    <h1 class="text-2xl mb-6 whitespace-normal break-words">
+  <UContainer class="flex flex-col justify-start" v-if="data">
+    <ULink :to="`/`" class="hover:underline pb-4 text-neutral-500"> zurück zur Startseite </ULink>
+    <h1 class="text-4xl mb-6 whitespace-normal break-words">
       {{ data.title }}
     </h1>
   </UContainer>
 
-  <div class="w-full flex justify-center mb-3 px-4" v-if="data && data.images && data.images.length > 0">
+  <div
+    class="w-full flex justify-center mb-3  overflow-visible"
+    v-if="data && data.images && data.images.length > 0"
+  >
+    <UBreadcrumb :items="items" />
+
     <UCarousel
       v-slot="{ item }"
-      fade
+      :ui="{ item: 'basis-1/1' }"
       arrows
-      dots
       :items="data.images"
-      class="max-w-7xl mx-auto mb-4 align-center overflow-visible"
+      class="max-w-7xl mx-auto mb-4 align-center overflow-visible rounded-lg"
     >
-    {{ console.log("test: ", data.images) }}
-      <NuxtLink :to="`/${item}`" class="block mx-auto">
-        <NuxtImg
-          :src="`/${item}`"
-          class="max-h-4xl rounded-lg mr-3 shadow-xl"
-        ></NuxtImg>
-      </NuxtLink>
+      {{ console.log("test: ", data.images) }}
+        <div class="relative pb-10 pr-3">
+          <div class="shadow-xl rounded-lg overflow-visible">
+            <NuxtImg :src="`/${item}`" class="max-h-4xl rounded-lg block" />
+          </div>
+        </div>
     </UCarousel>
   </div>
 
   <UContainer class="py-10 flex flex-col" v-if="data">
     <div class="flex flex-wrap gap-4 mb-8">
-      <div v-for="icon in data.icons" v-if="data.icons && data.icons.length > 0">
+      <div
+        v-for="icon in data.icons"
+        v-if="data.icons && data.icons.length > 0"
+      >
         <UIcon :name="icon" class="w-8 h-8" />
+        
       </div>
     </div>
     <div class="flex flex-wrap gap-4 mb-8">
