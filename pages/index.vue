@@ -80,7 +80,7 @@ const items = ref([
             class="rounded-md py-6 transition-colors duration-150 hover:cursor-pointer flex flex-col justify-center"
           >
             <div>
-              <p class="mb-2 text-pretty group-hover:underline">
+              <p class="mb-2 text-pretty group-hover:underline ">
                 {{ post.title }}
               </p>
               <div

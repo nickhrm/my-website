@@ -1,5 +1,5 @@
 <template>
-  <UContainer class=" py-6 max-w-7xl" >
+  <UContainer class=" py-6 max-w-4xl" >
     <div class="flex flex-row justify-start items-center">
       <UButton variant="link" color="black" to="/">Nick Hermann</UButton>
       <div class="flex-grow"></div>

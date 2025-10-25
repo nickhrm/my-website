@@ -44,27 +44,7 @@ const items = ref([
     </h1>
   </UContainer>
 
-  <div
-    class="w-full flex justify-center mb-3  overflow-visible"
-    v-if="data && data.images && data.images.length > 0"
-  >
-    <UBreadcrumb :items="items" />
-
-    <UCarousel
-      v-slot="{ item }"
-      :ui="{ item: 'basis-1/1' }"
-      arrows
-      :items="data.images"
-      class="max-w-7xl mx-auto mb-4 align-center overflow-visible rounded-lg"
-    >
-      {{ console.log("test: ", data.images) }}
-        <div class="relative pb-10 pr-3">
-          <div class="shadow-xl rounded-lg overflow-visible">
-            <NuxtImg :src="`/${item}`" class="max-h-4xl rounded-lg block" />
-          </div>
-        </div>
-    </UCarousel>
-  </div>
+ 
 
   <UContainer class="py-10 flex flex-col" v-if="data">
     <div class="flex flex-wrap gap-4 mb-8">
@@ -84,6 +64,26 @@ const items = ref([
 
     <ContentRenderer :value="data" class="prose dark:prose-invert" />
   </UContainer>
+
+   <div
+    class="w-full flex justify-center mb-3  overflow-visible"
+    v-if="data && data.images && data.images.length > 0"
+  >
+
+    <UCarousel
+      v-slot="{ item }"
+      arrows
+      :items="data.images"
+      class=" mx-auto mb-4 align-center overflow-visible rounded-lg"
+    >
+      {{ console.log("test: ", data.images) }}
+        <div class="relative pb-10 pr-3">
+          <div class="shadow-xl rounded-lg overflow-visible">
+            <NuxtImg :src="`/${item}`" class="max-h-4xl rounded-lg block" />
+          </div>
+        </div>
+    </UCarousel>
+  </div>
   <div class="h-28"></div>
 </template>
 
