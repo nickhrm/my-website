@@ -65,29 +65,32 @@ const items = ref([
     <ContentRenderer :value="data" class="prose dark:prose-invert" />
   </UContainer>
 
-   <div
-    class="w-full flex justify-center mb-3  overflow-visible"
-    v-if="data && data.images && data.images.length > 0"
-  >
+  <div
+  class="w-full flex justify-center mb-3 relative"
+  v-if="data && data.images && data.images.length > 0"
+>
+<UCarousel
+  v-slot="{ item }"
+:arrows="(data.images?.length ?? 0) > 1"
+  :items="data.images"
+  class="relative mx-auto rounded-lg max-w-[100vw] !overflow-visible "
+>
+    <NuxtImg
+      :src="`/${item}`"
+      class="max-h-[90vh] shadow-sm  rounded-lg block max-w-[90vw] mb-6 mx-1 object-contain" />
+</UCarousel>
+</div>
 
-    <UCarousel
-      v-slot="{ item }"
-      arrows
-      :items="data.images"
-      class=" mx-auto mb-4 align-center overflow-visible rounded-lg"
-    >
-      {{ console.log("test: ", data.images) }}
-        <div class="relative pb-10 pr-3">
-          <div class="shadow-xl rounded-lg overflow-visible">
-            <NuxtImg :src="`/${item}`" class="max-h-4xl rounded-lg block" />
-          </div>
-        </div>
-    </UCarousel>
-  </div>
   <div class="h-28"></div>
 </template>
 
 <style scoped>
+
+:deep(.carousel) {
+  overflow: visible !important;
+}
+
+
 /* Beispielhafte Styles für Inhalte, die im ContentRenderer generiert werden */
 .custom-content h1 {
   font-size: 2.5rem;
