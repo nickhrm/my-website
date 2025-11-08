@@ -60,7 +60,7 @@ const items = ref([
         </div>
       </div>
       <NuxtImg
-        src="/profilbild.jpg"
+        src="/pb.jpeg"
         alt="Profilbild"
         class="rounded-xl w-32 h-32 my-5"
       />
