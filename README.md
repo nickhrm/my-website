@@ -1,75 +1,36 @@
-# Nuxt Minimal Starter
+# nickhrm.de
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Persönliche Portfolio-Website, gebaut mit SvelteKit, Tailwind CSS v4 und mdsvex. Statischer Export über `@sveltejs/adapter-static`.
 
-## Setup
+## Entwicklung
 
-Make sure to install dependencies:
-
-```bash
-# npm
+```sh
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## Build
 
-Build the application for production:
-
-```bash
-# npm
+```sh
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Erzeugt eine statische Seite im Ordner `build/`, die auf jedem Static-Hosting deploybar ist.
 
-```bash
-# npm
-npm run preview
+## Projekte pflegen
 
-# pnpm
-pnpm preview
+Neue Projekte werden als Markdown-Datei mit Frontmatter unter `src/lib/content/posts/` angelegt (siehe bestehende Dateien als Vorlage). Felder: `title`, `tags`, `icons` (Iconify-Namen wie `logos:react`), optional `coverImage` und `images`.
 
-# yarn
-yarn preview
+Nach dem Hinzufügen neuer Icon-Namen einmal
 
-# bun
-bun run preview
+```sh
+npm run icons
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+ausführen, damit `src/lib/icon-data.ts` die passenden Icons offline (ohne Laufzeit-API-Aufruf) enthält.
+
+## Typprüfung
+
+```sh
+npm run check
+```

@@ -1,0 +1,75 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/plus-jakarta-sans';
+@plugin '@tailwindcss/typography';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+	--paper: #f3f5ef;
+	--paper-soft: #eaeee3;
+	--ink: #16241f;
+	--ink-soft: #435049;
+	--line: #d9ddcf;
+	--primary: #1f4b43;
+	--primary-strong: #163732;
+	--accent: #dd9a34;
+	--accent-strong: #b97e22;
+}
+
+.dark {
+	--paper: #101c17;
+	--paper-soft: #17251f;
+	--ink: #eef1e9;
+	--ink-soft: #a9b7ae;
+	--line: #29392f;
+	--primary: #8fd0bb;
+	--primary-strong: #b6e3d3;
+	--accent: #f0b84d;
+	--accent-strong: #f6cb7a;
+}
+
+@theme inline {
+	--font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+	--color-paper: var(--paper);
+	--color-paper-soft: var(--paper-soft);
+	--color-ink: var(--ink);
+	--color-ink-soft: var(--ink-soft);
+	--color-line: var(--line);
+	--color-primary: var(--primary);
+	--color-primary-strong: var(--primary-strong);
+	--color-accent: var(--accent);
+	--color-accent-strong: var(--accent-strong);
+}
+
+@layer base {
+	html {
+		font-family: var(--font-sans);
+		color-scheme: light;
+	}
+
+	html.dark {
+		color-scheme: dark;
+	}
+
+	body {
+		background-color: var(--color-paper);
+		color: var(--color-ink);
+	}
+
+	::selection {
+		background-color: var(--color-accent);
+		color: var(--color-primary-strong);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}
