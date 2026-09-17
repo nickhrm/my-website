@@ -1,0 +1,9 @@
+node_modules
+build
+.svelte-kit
+.git
+.output
+.vercel
+.netlify
+.wrangler
+*.log
